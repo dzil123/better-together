@@ -17,4 +17,13 @@ Test: Hopefully this was a good test.
 
 <<you_get_the_point>>
 
+-> Option 1
+    Haha yes.
+-> Option 2
+    lkjfjawefj
+-> Option 3 <<if $money > 0>>
+    This is impossible since you have no money.
+-> Option 4
+    I don't think we'll need four options, but here you go.
+
 ===

@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.yarn"
+type="GDScript"
+path="res://.import/test-script.yarn-5911e5c22202bcac5c24e355e6ee067c.gd"
+
+[deps]
+
+source_file="res://assets/yarn/test-script.yarn"
+dest_files=[ "res://.import/test-script.yarn-5911e5c22202bcac5c24e355e6ee067c.gd" ]
+
+[params]
+
