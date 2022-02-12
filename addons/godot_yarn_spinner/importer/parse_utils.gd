@@ -25,6 +25,8 @@ const ARITH_OPERATORS = ["+", "-", "*", "/", "%", "(", ")"]
 """
 Converts a token array into a GDScript expression
 """
+
+
 func tokens_to_expression(tokens: Array) -> String:
 	var expression = ""
 
@@ -35,13 +37,10 @@ func tokens_to_expression(tokens: Array) -> String:
 		var token_parts = []
 
 		# Add spaces around operators if we're not in a string just to make sure we parse them correctly
-		if !token.begins_with("\""):
+		if !token.begins_with('"'):
 			for op_text in TEXT_TO_SYMBOL.keys():
 				token = token.replace(
-					op_text,
-					" {op} ".format({
-						"op": TEXT_TO_SYMBOL[op_text]
-					})
+					op_text, " {op} ".format({"op": TEXT_TO_SYMBOL[op_text]})
 				)
 
 			for op in ARITH_OPERATORS:
@@ -58,9 +57,9 @@ func tokens_to_expression(tokens: Array) -> String:
 			# Any special cases are handled here
 			if part.begins_with("$"):
 				# Variable. Convert to a variables dictionary lookup
-				expression += "(variables[\"{variable_name}\"]) ".format({
-					"variable_name": part
-				})
+				expression += '(variables["{variable_name}"]) '.format(
+					{"variable_name": part}
+				)
 				continue
 
 			expression += part + " "

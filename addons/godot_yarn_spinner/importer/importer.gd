@@ -4,26 +4,34 @@ extends EditorImportPlugin
 var yarn_parser = preload("yarn_parser.gd").new()
 var yarn_translator = preload("yarn_to_gd.gd").new()
 
+
 func get_importer_name():
 	return "com.technohacker.yarn"
+
 
 func get_visible_name():
 	return "Yarn Story"
 
+
 func get_recognized_extensions():
 	return ["yarn"]
+
 
 func get_save_extension():
 	return "gd"
 
+
 func get_resource_type():
 	return "GDScript"
+
 
 func get_import_options(preset):
 	return []
 
+
 func get_preset_count():
 	return 0
+
 
 func import(source_file, save_path, options, r_platform_variants, r_gen_files):
 	var path = "%s.%s" % [save_path, get_save_extension()]

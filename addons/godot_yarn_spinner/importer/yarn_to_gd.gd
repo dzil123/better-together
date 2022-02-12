@@ -37,18 +37,18 @@ const FUNCTION = """
 func {function_name}() -> void:
 """
 
+
 # Create a string containing a function in GDScript
 func function(function_name: String, body: Array) -> String:
 	# Prepare the start of the function
-	var funcstr = FUNCTION.format({
-		"function_name": function_name
-	})
+	var funcstr = FUNCTION.format({"function_name": function_name})
 
 	# Append the body with indents and newlines
 	for line in body:
 		funcstr += "\t" + line + "\n"
 
 	return funcstr
+
 
 # Convert a YarnCommand to an array of lines of GDScript
 func command(command: YarnCommand) -> Array:
@@ -58,61 +58,62 @@ func command(command: YarnCommand) -> Array:
 		# TODO: Needs to be fixed. This yield doesn't continue the story correctly
 		"wait":
 			return [
-				"yield(get_tree().create_timer({duration}), \"timeout\")".format({
-					"duration": float(command.parameters[0])
-				})
+				'yield(get_tree().create_timer({duration}), "timeout")'.format(
+					{"duration": float(command.parameters[0])}
+				)
 			]
 
 		# Set a variable to the result of an expression
 		"set":
 			return [
-				"variables[\"{name}\"] {expression}".format({
-					"name": command.parameters[0],
-					"expression": parse_utils.tokens_to_expression(command.parameters.slice(1, command.parameters.size()))
-				})
+				'variables["{name}"] {expression}'.format(
+					{
+						"name": command.parameters[0],
+						"expression":
+						parse_utils.tokens_to_expression(
+							command.parameters.slice(1, command.parameters.size())
+						)
+					}
+				)
 			]
 
 		# Stop a block
 		"stop":
-			return [
-				"return"
-			]
+			return ["return"]
 
 		# Other command. All parameters are sent as strings
 		_:
 			for i in command.parameters.size():
 				# If any parameter isn't quoted already, quote it
-				if !command.parameters[i].begins_with("\""):
-					command.parameters[i] = "\"" + command.parameters[i] + "\""
+				if !command.parameters[i].begins_with('"'):
+					command.parameters[i] = '"' + command.parameters[i] + '"'
 
 			return [
-				"emit_signal(\"command\", self, \"{command}\", {params})".format({
-					"command": command.command,
-					"params": command.parameters
-				}),
+				'emit_signal("command", self, "{command}", {params})'.format(
+					{"command": command.command, "params": command.parameters}
+				),
 				"yield()"
 			]
 
+
 func dialogue(dialogue: YarnDialogue) -> Array:
 	return [
-		"emit_signal(\"dialogue\", self, \"{actor}\", \"{message}\".format(variables))".format({
-			"actor": dialogue.actor,
-			"message": dialogue.message
-		}),
+		'emit_signal("dialogue", self, "{actor}", "{message}".format(variables))'.format(
+			{"actor": dialogue.actor, "message": dialogue.message}
+		),
 		"yield()"
 	]
 
+
 # jump can be a YarnJump or a YarnOption since they both have the target property
 func jump(jump) -> Array:
-	return [
-		"current_function = \"%s\"" % jump.target,
-		"return %s()" % jump.target
-	]
+	return ['current_function = "%s"' % jump.target, "return %s()" % jump.target]
+
 
 func build_options(opts: Array) -> Array:
 	var parsed_options := []
 	for option in opts:
-		var option_line = "\"" + option.message + "\".format(variables)"
+		var option_line = '"' + option.message + '".format(variables)'
 		if option.condition != "":
 			# Option is gated with a condition
 			option_line = "(" + option_line + " if " + option.condition + " else null)"
@@ -120,27 +121,29 @@ func build_options(opts: Array) -> Array:
 		parsed_options.append(option_line)
 
 	return [
-		"emit_signal(\"options\", self, [{options}])".format({
-			"options": PoolStringArray(parsed_options).join(", ")
-		}),
+		'emit_signal("options", self, [{options}])'.format(
+			{"options": PoolStringArray(parsed_options).join(", ")}
+		),
 		"match yield():"
 	]
+
 
 func options(opts: Array) -> Array:
 	var body := build_options(opts)
 
 	for option in opts:
-		body.append("\t\"" + option.message + "\":")
+		body.append('\t"' + option.message + '":')
 		for line in jump(option):
 			body.append("\t\t" + line)
 
 	return body
 
+
 func shortcut_options(opts: Array) -> Array:
 	var body := build_options(opts)
 
 	for option in opts:
-		body.append("\t\"" + option.message + "\":")
+		body.append('\t"' + option.message + '":')
 
 		var lines = convert_fibres(option.body)
 		if lines.empty():
@@ -151,20 +154,29 @@ func shortcut_options(opts: Array) -> Array:
 
 	return body
 
+
 func conditionals(conditionals: Array) -> Array:
 	var body = []
 
 	for i in conditionals.size():
 		match i:
 			0:
-				body.append("if {expression}:".format({
-					"expression": conditionals[i].expression,
-				}))
+				body.append(
+					"if {expression}:".format(
+						{
+							"expression": conditionals[i].expression,
+						}
+					)
+				)
 			_:
 				if conditionals[i].expression != "":
-					body.append("elif {expression}:".format({
-						"expression": conditionals[i].expression,
-					}))
+					body.append(
+						"elif {expression}:".format(
+							{
+								"expression": conditionals[i].expression,
+							}
+						)
+					)
 				else:
 					body.append("else:")
 
@@ -177,13 +189,14 @@ func conditionals(conditionals: Array) -> Array:
 
 	return body
 
+
 func to_gd(story: YarnStory) -> GDScript:
 	var script = GDScript.new()
 
 	# Start the script out with boilerplate
 	script.source_code += SCRIPT_HEADER
 
-	if (typeof(story.nodes) == TYPE_DICTIONARY):
+	if typeof(story.nodes) == TYPE_DICTIONARY:
 		for thread in story.nodes:
 			# Each thread is a function
 			var body := convert_fibres(story.nodes[thread].body)
@@ -194,6 +207,7 @@ func to_gd(story: YarnStory) -> GDScript:
 	script.reload()
 
 	return script
+
 
 func convert_fibres(fibres: Array) -> Array:
 	var body := []

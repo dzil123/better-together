@@ -5,17 +5,19 @@ var parse_utils = preload("./parse_utils.gd").new()
 """
 Reads a line and counts its level of indentation
 """
+
+
 func read_line_with_indent(file: File) -> Dictionary:
 	var line = file.get_line()
 	var dedent = line.dedent()
-	return {
-		"indent": line.length() - dedent.length(),
-		"content": dedent.strip_edges()
-	}
+	return {"indent": line.length() - dedent.length(), "content": dedent.strip_edges()}
+
 
 """
 Parses the given Yarn file line-by-line
 """
+
+
 func parse(yarn_file: File) -> YarnStory:
 	var script := YarnStory.new()
 
@@ -29,9 +31,12 @@ func parse(yarn_file: File) -> YarnStory:
 
 	return script
 
+
 """
 Starts a new node
 """
+
+
 func new_node(file: File) -> YarnNode:
 	var node := YarnNode.new()
 
@@ -54,6 +59,7 @@ func new_node(file: File) -> YarnNode:
 
 	return node
 
+
 func parse_body(file: File, indent_level := 0) -> Array:
 	# The body is an array of Yarn* resources
 	var body := []
@@ -73,7 +79,9 @@ func parse_body(file: File, indent_level := 0) -> Array:
 
 		if line.content.begins_with("[["):
 			# Option/Jump
-			var option = line.content.replace("[[", "").replace("]]", "").split("|", true, 1)
+			var option = line.content.replace("[[", "").replace("]]", "").split(
+				"|", true, 1
+			)
 			if option.size() == 2:
 				# Option
 				# Syntax: [[<message>|<target>]]
@@ -97,12 +105,16 @@ func parse_body(file: File, indent_level := 0) -> Array:
 			var condition = ""
 			if line.content.ends_with(">>"):
 				# This option is gated with a condition
-				var conditional = (line.content.split("<<", false, 1)[1].replace(">>", "") as String).split(" ", false, 1)
+				var conditional = (line.content.split("<<", false, 1)[1].replace(">>", "") as String).split(
+					" ", false, 1
+				)
 				line.content = line.content.split("<<", false, 1)[0]
 				if conditional[0] == "if":
 					print(conditional)
 					# Just making sure it's an actual conditional
-					condition = parse_utils.tokens_to_expression(parse_command_args(conditional[1]))
+					condition = parse_utils.tokens_to_expression(
+						parse_command_args(conditional[1])
+					)
 
 			node.condition = condition
 			node.message = line.content.replace("->", "").strip_edges()
@@ -115,9 +127,11 @@ func parse_body(file: File, indent_level := 0) -> Array:
 			# Command/Conditional
 			# Syntax:
 			# << <command> <arguments> >>
-			var command = (line.content.replace("<<", "").replace(">>", "") as String).split(" ", false, 1)
+			var command = (line.content.replace("<<", "").replace(">>", "") as String).split(
+				" ", false, 1
+			)
 
-			if (!command.empty()):
+			if !command.empty():
 				# This could be a conditional
 				match command[0]:
 					"if", "elif", "else":
@@ -125,10 +139,12 @@ func parse_body(file: File, indent_level := 0) -> Array:
 						# Syntax:
 						# << <type> <expression> >>
 						var node = YarnConditional.new()
-						node.expression = parse_utils.tokens_to_expression(parse_command_args(command[1] if command.size() != 1 else ""))
+						node.expression = parse_utils.tokens_to_expression(
+							parse_command_args(command[1] if command.size() != 1 else "")
+						)
 						# +1 to start it off
 						node.body = parse_body(file, indent_level + 1)
-						
+
 						# The conditional could also only contain options, in which case, replace it with
 						# YarnOption blocks with conditions
 						var only_options = true
@@ -154,7 +170,7 @@ func parse_body(file: File, indent_level := 0) -> Array:
 						# Plain command
 						var node = YarnCommand.new()
 						node.command = command[0]
-						if (command.size() > 1):
+						if command.size() > 1:
 							node.parameters = parse_command_args(command[1])
 						else:
 							node.parameters = []
@@ -186,9 +202,12 @@ func parse_body(file: File, indent_level := 0) -> Array:
 
 	return body
 
+
 """
 Convert command arguments/expression strings into an array of tokens
 """
+
+
 func parse_command_args(args: String) -> Array:
 	# Regex to match subquotes:
 	# Split into individual tokens separated by spaces
