@@ -1,18 +1,27 @@
 extends CanvasLayer
 
-var commands = {}
+export(NodePath) var timer_label_path
+export(NodePath) var option_list_path
 
+var commands = {}
 var block_progress = false
+
+onready var timer_label = get_node(timer_label_path) as Label
+onready var options_list = get_node(option_list_path)
+onready var yarn = $YarnStory
 
 
 func _init():
-	commands["set_cake_visible"] = funcref(self, "set_cake_visible")
-	commands["close_dialog"] = funcref(self, "close_dialog")
-	commands["the_end"] = funcref(self, "the_end")
+	pass
+
+
+#	commands["set_cake_visible"] = funcref(self, "set_cake_visible")
 
 
 func _ready():
-	$YarnStory.step_through_story()
+	options_list.connect("select_option", self, "_on_select_option")
+	yarn.set_current_yarn_thread("TestYarn")
+	yarn.step_through_story()
 
 
 func _on_YarnStory_dialogue(yarn_node, actor, message):
@@ -21,17 +30,19 @@ func _on_YarnStory_dialogue(yarn_node, actor, message):
 
 
 func _on_DialogText_Label_line_complete():
+	print("foo")
 	if !block_progress:
-		$YarnStory.step_through_story()
+		yarn.step_through_story()
 
 
 func _on_YarnStory_options(yarn_node, options):
 	block_progress = true
+	options_list._on_YarnStory_options(yarn_node, options)
 
 
 func _on_select_option(option):
 	block_progress = false
-	$YarnStory.step_through_story(option)
+	yarn.step_through_story(option)
 
 
 func _on_YarnStory_command(yarn_node, command, parameters):

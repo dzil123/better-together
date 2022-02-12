@@ -114,9 +114,11 @@ func build_options(opts: Array) -> Array:
 	var parsed_options := []
 	for option in opts:
 		var option_line = '"' + option.message + '".format(variables)'
-		if option.condition != "":
+		if option.condition == "":
+			option.condition = "true"
 			# Option is gated with a condition
-			option_line = "(" + option_line + " if " + option.condition + " else null)"
+		option_line += ", " + option.condition
+		option_line = "[" + option_line + "]"
 
 		parsed_options.append(option_line)
 

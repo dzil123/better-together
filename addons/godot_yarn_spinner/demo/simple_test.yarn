@@ -30,7 +30,7 @@ title: noCake
 ---
 
 Linda: Aww. You're no fun.
-<<set_cake_visible false>>
+<<stop>>
 
 Bob: oh thank god.
 [[theEnd]]

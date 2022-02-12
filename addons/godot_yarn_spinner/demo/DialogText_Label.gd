@@ -12,18 +12,23 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
-		if !is_line_complete():
-			show_full_text()
-		else:
-			emit_signal("line_complete")
+		on_activate()
+
+
+func on_activate():
+	if !is_line_complete():
+		show_full_text()
+	else:
+		emit_signal("line_complete")
 
 
 func show_full_text():
-	set_visible_characters(get_total_character_count())
+	visible_characters = -1
 
 
 func is_line_complete():
-	return get_visible_characters() > get_total_character_count()
+	print("DEBUG ", visible_characters, " ", get_total_character_count())
+	return visible_characters >= get_total_character_count() or visible_characters < 0
 
 
 func start_dialog(dialog_text):
@@ -32,7 +37,9 @@ func start_dialog(dialog_text):
 
 
 func _on_Timer_timeout():
-	set_visible_characters(get_visible_characters() + 1)
+	if is_line_complete():
+		return
+	visible_characters += 1
 
 
 func _on_YarnStory_dialogue(_yarn_node, _actor, message):
