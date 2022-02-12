@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://addons/godot_yarn_spinner/demo/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://addons/godot_yarn_spinner/demo/menu_section_9patch.png" type="Texture" id=2]
@@ -12,6 +12,13 @@
 [sub_resource type="DynamicFont" id=1]
 size = 20
 font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 22
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=7]
+default_font = SubResource( 6 )
 
 [sub_resource type="GDScript" id=4]
 script/source = "extends ItemList
@@ -64,9 +71,9 @@ __meta__ = {
 [node name="Dialog_Control" type="Control" parent="."]
 anchor_right = 1.0
 margin_left = 100.0
-margin_top = 50.0
+margin_top = 20.0
 margin_right = -100.0
-margin_bottom = 200.0
+margin_bottom = 170.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -111,7 +118,7 @@ script = ExtResource( 5 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -150.0
+margin_top = -165.0
 theme = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -129,7 +136,58 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="NinePatchRect2" type="NinePatchRect" parent="Bottom Box/NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 305.0
+margin_top = 10.0
+margin_right = -22.0
+margin_bottom = -10.0
+theme = SubResource( 7 )
+texture = ExtResource( 2 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Bottom Box/NinePatchRect/NinePatchRect2"]
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = 45.0
+text = "Today it's seen all around the web; on templates, websites, and stock designs. Use our generator to get your own, or read on for the authoritative history of lorem ipsum."
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Bottom Box/NinePatchRect/NinePatchRect2"]
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = 55.0
+margin_right = -10.0
+margin_bottom = 90.0
+text = "Today it's seen all around the web; on templates, websites, and stock designs. Use our generator to get your own, or read on for the authoritative history of lorem ipsum."
+scroll_active = false
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Bottom Box/NinePatchRect/NinePatchRect2"]
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = 100.0
+margin_right = -10.0
+margin_bottom = 135.0
+text = "Today it's seen all around the web; on templates, websites, and stock designs. Use our generator to get your own, or read on for the authoritative history of lorem ipsum."
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ItemList" type="ItemList" parent="Bottom Box/NinePatchRect"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 306.0
@@ -164,6 +222,9 @@ margin_bottom = 111.0
 custom_colors/font_color = Color( 0.568627, 0, 1, 1 )
 custom_fonts/font = SubResource( 5 )
 text = "20:00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.05
