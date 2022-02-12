@@ -1,0 +1,20 @@
+title: TestYarn
+position: 0,0.5
+---
+<<set $confidence_neighbor = 0>>
+<<set $confidence_friend = 0>>
+<<set $confidence_bestfriend = 0>>
+<<set $money = 0>>
+
+Test: Did you hear Steve Jobs...
+Test2: Yes. I'm a Zoomer.
+Test: Oh.
+
+<<test_command>>
+<<another_one>>
+
+Test: Hopefully this was a good test.
+
+<<you_get_the_point>>
+
+===
