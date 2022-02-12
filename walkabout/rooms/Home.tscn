@@ -6,6 +6,16 @@
 
 [node name="Home" type="Node2D"]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -1000.0
+margin_top = -1000.0
+margin_right = 1000.0
+margin_bottom = 1000.0
+color = Color( 0.27451, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2( 0, -50 )
 current = true

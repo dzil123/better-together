@@ -5,6 +5,16 @@
 
 [node name="NotHome" type="Node2D"]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -1000.0
+margin_top = -1000.0
+margin_right = 1000.0
+margin_bottom = 1000.0
+color = Color( 0.388235, 0.301961, 0.301961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Portal" parent="." instance=ExtResource( 2 )]
 position = Vector2( -205, 0 )
 
