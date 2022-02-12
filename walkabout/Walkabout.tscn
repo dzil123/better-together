@@ -1,13 +1,22 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://walkabout/Walkabout.gd" type="Script" id=1]
+[ext_resource path="res://walkabout/rooms/Home.tscn" type="PackedScene" id=2]
+[ext_resource path="res://walkabout/rooms/NotHome.tscn" type="PackedScene" id=3]
 
 [node name="Walkabout" type="Node2D"]
+position = Vector2( 1, 0 )
 script = ExtResource( 1 )
+roomIdToScene = [ ExtResource( 2 ), ExtResource( 3 ) ]
 
-[node name="PersistentUI" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="PersistentUI" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="PersistentUI"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 113.0
+margin_bottom = 14.0
+text = "test test test test"
 __meta__ = {
 "_edit_use_anchors_": false
 }
