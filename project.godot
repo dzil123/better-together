@@ -8,10 +8,66 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "YarnCommand",
+"language": "GDScript",
+"path": "res://addons/godot_yarn_spinner/resources/YarnCommand.gd"
+}, {
+"base": "Resource",
+"class": "YarnConditional",
+"language": "GDScript",
+"path": "res://addons/godot_yarn_spinner/resources/YarnConditional.gd"
+}, {
+"base": "Resource",
+"class": "YarnDialogue",
+"language": "GDScript",
+"path": "res://addons/godot_yarn_spinner/resources/YarnDialogue.gd"
+}, {
+"base": "Resource",
+"class": "YarnJump",
+"language": "GDScript",
+"path": "res://addons/godot_yarn_spinner/resources/YarnJump.gd"
+}, {
+"base": "Resource",
+"class": "YarnNode",
+"language": "GDScript",
+"path": "res://addons/godot_yarn_spinner/resources/YarnNode.gd"
+}, {
+"base": "Resource",
+"class": "YarnOption",
+"language": "GDScript",
+"path": "res://addons/godot_yarn_spinner/resources/YarnOption.gd"
+}, {
+"base": "Resource",
+"class": "YarnShortcutOption",
+"language": "GDScript",
+"path": "res://addons/godot_yarn_spinner/resources/YarnShortcutOption.gd"
+}, {
+"base": "Resource",
+"class": "YarnStory",
+"language": "GDScript",
+"path": "res://addons/godot_yarn_spinner/resources/YarnStory.gd"
+} ]
+_global_script_class_icons={
+"YarnCommand": "",
+"YarnConditional": "",
+"YarnDialogue": "",
+"YarnJump": "",
+"YarnNode": "",
+"YarnOption": "",
+"YarnShortcutOption": "",
+"YarnStory": ""
+}
+
 [application]
 
 config/name="Better Together"
 config/icon="res://icon.png"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/godot_yarn_spinner/plugin.cfg" )
 
 [physics]
 
