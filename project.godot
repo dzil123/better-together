@@ -66,6 +66,11 @@ config/name="Better Together"
 run/main_scene="res://walkabout/Walkabout.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=960
+window/size/height=540
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/godot_yarn_spinner/plugin.cfg" )

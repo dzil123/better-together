@@ -4,9 +4,10 @@ var movable = true
 var entrance = 0
 
 func _ready():
-	# find siblings, tp to the right entrance
-	if get_parent() != null:
-		get_parent().find_node("portal_" + str(entrance))
+	for portal in get_tree().get_nodes_in_group("Portal"):
+		if portal.my_entrance == entrance:
+			self.position = portal.position
+			break
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_up"):

@@ -1,16 +1,23 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://walkabout/elements/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://walkabout/elements/Portal.tscn" type="PackedScene" id=2]
+[ext_resource path="res://walkabout/elements/Portal.gd" type="Script" id=3]
 
 [node name="Home" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 0, -50 )
 current = true
 
 [node name="Portal" parent="." instance=ExtResource( 2 )]
-position = Vector2( 118, 0 )
+position = Vector2( 240, 0 )
 goto_room = 1
+
+[node name="FakePortal" type="Node2D" parent="." groups=["Portal"]]
+position = Vector2( -100, 0 )
+script = ExtResource( 3 )
+my_entrance = -1
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 

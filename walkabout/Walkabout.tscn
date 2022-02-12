@@ -1,8 +1,55 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://walkabout/Walkabout.gd" type="Script" id=1]
 [ext_resource path="res://walkabout/rooms/Home.tscn" type="PackedScene" id=2]
 [ext_resource path="res://walkabout/rooms/NotHome.tscn" type="PackedScene" id=3]
+[ext_resource path="res://walkabout/CrudeTimer.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "InAndOut"
+length = 0.3
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("PersistentUI/FadeToBlack:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.133333, 0.166667, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.15 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "actually_go"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("PersistentUI/FadeToBlack:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
 
 [node name="Walkabout" type="Node2D"]
 position = Vector2( 1, 0 )
@@ -11,14 +58,27 @@ roomIdToScene = [ ExtResource( 2 ), ExtResource( 3 ) ]
 
 [node name="PersistentUI" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="PersistentUI"]
+[node name="FadeToBlack" type="ColorRect" parent="PersistentUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CrudeTimer" type="Label" parent="PersistentUI"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 113.0
 margin_bottom = 14.0
 text = "test test test test"
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Room" type="Node2D" parent="."]
+
+[node name="FadeToBlack" type="AnimationPlayer" parent="."]
+anims/InAndOut = SubResource( 1 )
+anims/RESET = SubResource( 2 )
