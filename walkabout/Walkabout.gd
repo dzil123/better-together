@@ -81,6 +81,10 @@ func actually_go():
 	if timer.timer > 0:
 		sounds._on_room_change(roomId)
 
+	if timer.timer <= 0:
+		for player in get_tree().get_nodes_in_group("player"):
+			player.lose = true
+
 
 func _on_DialogBox_movement_enabled(is_enabled):
 	for player in get_tree().get_nodes_in_group("player"):
@@ -94,6 +98,9 @@ func _on_Timer_expired():
 	_on_DialogBox_movement_enabled(false)
 	yarn.set_current_yarn_thread("TimeOut")
 	mainui._step_story()
+
+	for player in get_tree().get_nodes_in_group("player"):
+		player.lose = true
 
 
 # commands:
