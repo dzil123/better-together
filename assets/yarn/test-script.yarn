@@ -62,8 +62,21 @@ position: 0,100
     <<endif>>
     <<if $money >= 100>>
         [[Day1End]]
+    <<else>>
+        [[Day1Return]]
     <<endif>>
-    // [[Day1Return]]
+<<endif>>
+
+<<if $day == 2>>
+    <<if $day_started < 2>>
+        <<set $day_started = 2>>
+        [[Day2Start]]
+    <<endif>>
+    <<if $time <= 485>>
+        [[Day1End]]
+    <<else>>
+        [[Day1Return]]
+    <<endif>>
 <<endif>>
 ===
 
@@ -209,9 +222,10 @@ position: 200, 100
 // Invasion of privacy. Negging? downplaying emotions
 Abe: That package the other day? It just had a bunch of snacks in it.
 Abe: If that's what your parents sent you they must not think much of you.
+Abe: Well, at least I won't have to meet them. Lucky me!
 Eden: Hm.
 Abe: What's wrong? I'd hate to see you cry.
-Eden: Its just--it was for me. I don't know.
+Eden: Its just--even if. It was for me. I don't know.
 Abe: Don't worry about it. We're a team. You trust me right?
 -> Yes.
 -> No. <<if true is false>>
@@ -221,9 +235,8 @@ Abe: Yes. And I can trust you right?
 -> No. <<if true is false>>
 Eden: Yes.
 Abe: Great! Can I borrow your credit card?
--> No.
-    Eden: No.
 -> Why?
+    Eden: What for?
     Abe: My parents think I spend too much. // of their money.
     Abe: What a joke.
     Abe: I wish I didn't have to rely on my them so much.
@@ -238,6 +251,8 @@ Abe: Great! Can I borrow your credit card?
     -> No.
         Eden: No.
         //empty
+-> No.
+    Eden: No.
 Abe: Oh, and after all that. Guess we aren't a team then.
 -> Maybe...
 Eden: How much do you need? I can run over to the ATM at the plaza. Get some cash.
@@ -249,12 +264,23 @@ Abe: Just a hundred bucks. That's not too much to ask for, right?
 Abe: Perfect! I'll see you in a few minutes?
 Eden: Okay. How much is a few?
 Abe: Hmm, three?
+<<set $hacky_friendo = false>>
 Eden: (... what just happened?)
 ===
 
 title: Day1Friend
 position: 400, 100
 ---
+<<if $hacky_friendo == true>>
+    <<set $autoadvance = true>>
+    Friend: Haha, forgot a few dollars! Gotta go byeeeeee!
+    <<exit>>
+<<endif>>
+
+<<set $hacky_friendo = true>>
+// I'm afraid this is too jokey for the setting.
+// Feel free to use real denominations, and like, remove this.
+Friend: Ugh, worst ATM machine ever.
 Friend: Hey! Eden? Where have you been?
 -> Gotta go.
     Eden: Sorry, I'm in a bit of a rush. I need to use the ATM.
@@ -290,11 +316,13 @@ ATM: Please insert card.
 title: ATMLoop
 position: 400, -100
 ---
+// I'm afraid this is too jokey for the setting.
+// Feel free to use real denominations, and like, remove this.
 -> +1.
     <<set $money = $money + 1>>
     [[ATMLoop]]
--> +10.
-    <<set $money = $money + 10>>
+-> +7.
+    <<set $money = $money + 7>>
     [[ATMLoop]]
 -> Withdraw.
     ATM: Bzzzzzz.
@@ -302,6 +330,12 @@ position: 400, -100
     Eden: (Have ${$money} now.)
 ===
 
+title: Day1Return
+position: 600, 200
+---
+Eden: Home.
+Abe: You got it?
+===
 
 title: Day1End
 position: 600, 100
@@ -314,20 +348,58 @@ Abe: Thanks! You're the best.
 Eden: (yeah. mmm-hmm)
 Abe: Hey, are you okay?
 Abe: I'm sorry for this morning.
-Abe: I shouldn't have said we weren't a team. // bro what the fuck
+Abe: I shouldn't have said we weren't a team.
+// bro what the fuck
 Abe: Because we are.
 Abe: I was thinking we could go out somewhere.
-Abe: Somewhere nice. Somewhere expensive. Fancy restaurant? // bro what the fuck
+Abe: Somewhere nice. Somewhere expensive. Fancy restaurant?
+// bro what the fuck
 Abe: I love you.
 -> Love you too. <<if true == false>>
 -> Thanks. <<if true == false>>
 -> ...
 Eden: (i think i will just go lie in bed.)
-Abe: Aw, ok. Do you want some of these snacks? // :upside_down:
+Abe: Aw, ok. I'll join you in a bit. Do you want some of these snacks?
+// :upside_down:
+<<set_day 2>>
 ===
 
+title: Day2Start
+position: 200, 200
+---
+Eden: I'm going out.
+Abe: Today? Nawww. Today feels kinda lazy. Feels good.
+Eden: I have a midterm in a little bit.
+Abe: Already? Damn.
+Abe: Well, you haven't done much studying. Or attending. You might as well save some time and stay.
+Eden: No. I will go.
+-> Have to try.
+    Eden: "C's get degrees," I guess. I have to try and get some points.
+    Abe: Been there, done that.
+-> Parents would be disappointed.
+    Eden: I'm paying for these classes, well at least my parents are.
+    Eden: Wouldn't want to waste their money.
+    Abe: Ech. Parents. Whatever, keep them happy.
+-> I'm feeling lucky.
+    Eden: Today feels good. I'm feeling lucky.
+    Abe: Boring. Oh, well, whatever.
+Abe: How long is the midterm?
+Eden: Half an hour. Then I can skip the lecture right after.
+Abe: Should I go with you?
+Eden: Oh, I'm in a rush. You wouldn't want to get all sweaty and gross.
+Abe: Alright.
+Eden: Oh, and don't try to call me in class.
+Abe: You know me, I just can't help it. Bye.
+===
 
-title: Lose
+title: Day2Return
+position: 400, 200
+---
+Abe: Forget something? Might as well stay.
+Eden: Yeah. Maybe.
+===
+
+title: TimeOut
 position: 600, -100
 ---
 Eden: Ah.
