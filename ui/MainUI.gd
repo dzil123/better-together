@@ -19,7 +19,11 @@ signal movement_enabled(is_enabled)
 func _ready():
 	randomize()
 	options_list.connect("select_option", self, "_on_select_option")
+
+	add_command(self, "exit")
+	add_command(self, "wait", false)
 	yarn.set_variable("time_sec", 123)
+
 	reset()
 	yarn.set_current_yarn_thread("Start")
 	while yarn.current_function != "":
@@ -39,8 +43,8 @@ func _step_story(value = null):
 		reset()
 
 
-func add_command(obj, name):
-	commands[name] = funcref(obj, name)
+func add_command(obj, name, return_instantly = true):
+	commands[name] = [funcref(obj, name), return_instantly]
 
 
 func reset():
@@ -94,13 +98,34 @@ func _on_select_option(option):
 
 func _on_YarnStory_command(yarn_node, command, parameters):
 	print("yarn command: ", command, " ", parameters)
-	if command == "wait":
-		yield(get_tree().create_timer(float(parameters[0])), "timeout")
-		_step_story()
-		return
-	if commands.has(command):
-		commands[command].call_funcv(parameters)
+
+	if not commands.has(command):
+		print("MISSING COMMAND: ", command, " ", JSON.print(parameters))
+	else:
+		var fun = commands[command][0]
+		var should_return = commands[command][1]
+
+		fun.call_funcv(parameters)
+		if not should_return:
+			return
+
 	call_deferred("_step_story")
+
+
+# commands:
+
+
+func exit():
+	reset()
+
+
+func wait(time):
+	yield(get_tree().create_timer(float(time)), "timeout")
+	_step_story()
+	return
+
+
+# helpers:
 
 
 func string_to_bool(s):
