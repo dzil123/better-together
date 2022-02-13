@@ -3,7 +3,7 @@ extends Node2D
 var movable = true
 var entrance = 0
 
-var speed = 400
+var speed = 800
 
 
 func _ready():

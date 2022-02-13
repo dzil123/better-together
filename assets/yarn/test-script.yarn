@@ -1,5 +1,5 @@
 title: Start
-position: 5,-78
+position: 0,0
 ---
 <<set $confidence_neighbor = 0>>
 <<set $confidence_friend = 0>>
@@ -10,7 +10,7 @@ position: 5,-78
 ===
 
 title: TestYarn
-position: 0,0.5
+position: -200,0
 ---
 
 Test: Did you hear Steve Jobs...
@@ -36,26 +36,41 @@ Test: You have this much money {$money}.
 ===
 
 title: IDKFigureItOut
-position: 20,0
+position: 0,100
 ---
-// <<if $lose is true>>
-// <<endif>>
+<<if $lose is true>>
+    Test: Stub
+<<endif>>
 
-// <<if $day == 0>>
-//     <<if $day_started < 0>>
-//         [[Day0Start]]
-//     <<endif>>
-//     // <<if $>>
-//         // [[Day0End]]
-//     // <<endif>>
-//     [[Day0Return]]
-// <<endif>>
+<<if $day == 0>>
+    <<if $day_started < 0>>
+        <<set $day_started = 0>>
+        <<set $got_package = false>>
+        [[Day0Start]]
+    <<endif>>
+    <<if $got_package == true>>
+        [[Day0End]]
+    <<endif>>
+    // [[Day0Return]]
+<<endif>>
+
+<<if $day == 1>>
+    <<if $day_started < 1>>
+        <<set $day_started = 1>>
+        <<set $money = 0>>
+        [[Day1Start]]
+    <<endif>>
+    <<if $money >= 100>>
+        [[Day1End]]
+    <<endif>>
+    // [[Day1Return]]
+<<endif>>
 ===
 
 title: Day0Start
-position: 30,0
+position: 200,0
 ---
-
+// Acting creepy. VERY insistent.
 Abe: Hey, it's the weekend. Where are you headed?
 -> Package.
     Eden: I'm picking up a package.
@@ -68,6 +83,7 @@ Abe: Didn't I tell you you could just deliver it here?
     Eden: Yeah. Sorry.
     Eden: Well, actually.
 -> Parents.
+    // empty
 -> ...
     Eden: ...
     Abe: Well?
@@ -83,49 +99,52 @@ Abe: ...
 Abe: Fine. I'll come with you.
 Eden: Its not that far. I'll only take five minutes.
 Abe: Hm. Two minutes.
-Eden: Three.
+Eden: Two.
 Abe: Fine.
+Eden: (Just down the street to campus, go around to the dorms, down the hall to the office.)
+Eden: (I can do it in two minutes, right?)
 ===
 
 title: Day0Neighbor
-position: 40,0
+position: 400,0
 ---
 Neighbor: Hey Eden! Haven't seen you in a while.
 Neighbor: Weird, since you live in the room across from me.
--> Gotta go.
-    [[GottaGoNeighbor]]
 -> Yeah.
     Eden: Yeah.
-    Neighbor: Oh. Bad luck then, huh?
--> Been staying with boyfriend.
+    Neighbor: Bad luck then, huh?
+-> Been staying with partner.
     Eden: I've been staying with a partner.
     Neighbor: I see. How long?
     Eden: Been a few weeks now.
     Neighbor: That checks out.
-
-Neighbor: The whole floor is watching a movie tonight, Do you want to come?
 -> Gotta go.
     [[GottaGoNeighbor]]
+
+Neighbor: The whole floor is watching a movie tonight, Do you want to come?
 -> Busy with school.
     Eden: Sorry, I've got a lot of homework.
     Neighbor: Aww, too bad. Well, have fun with that!
     Eden: I'll try.
 -> Made plans already.
     Eden: I can't. My boyfriend wants me to stay overnight.
-    Neighbor: Alright. Hope you two have fun!
+    Neighbor: Alright. You two have something planned?
     Eden: Yeah.
-Neighbor: Well, hope to see you around more often!
+-> Gotta go.
+    [[GottaGoNeighbor]]
+
+Neighbor: Well, Hope to see you around more often!
 ===
 
 title: GottaGoNeighbor
-position: 50,0
+position: 600,0
 ---
 Eden: Sorry, I'm in a bit of a rush. I gotta go right now.
 Neighbor: Aw. Too bad. See you around sometime!
 ===
 
 title: Day0End
-position: 60,0
+position: 800,0
 ---
 Abe: You got it?
 Eden: Yeah.
@@ -141,7 +160,122 @@ Eden: Yeah, I guess.
 Abe: Doesn't seem like they cared. But I do, right?
 Eden: Right.
 Abe: Alright. Love you.
+<<set_day 1>>
 ===
 
-// title: Day1End
-// position: 
+title: Day0Return
+position: 1000, 0
+---
+// <<if $time_sec > 110>>
+// Abe: Decided not to get it?
+// Eden: No, I just forgot something.
+// Abe: I can come.
+// Eden: I'm fine.
+// <<else>>
+// Abe: You got it yet?
+// Eden: Nope.
+// Abe: Just stay here with me.
+// Eden: I can't, I just have to, uhh.
+// <<endif>>
+===
+
+title: Day1Start
+position: 200, 100
+---
+// Invasion of privacy. Negging? downplaying emotions
+Abe: That package the other day? It just had a bunch of snacks in it.
+Abe: If that's what your parents sent you they must not think much of you.
+Eden: Hm.
+Abe: What's wrong? I'd hate to see you cry.
+Eden: Its just--it was for me. I don't know.
+Abe: Don't worry about it. We're a team. You trust me right?
+-> Yes.
+-> No. <<if true is false>>
+Eden: Yes.
+Abe: Yes. And I can trust you right?
+-> Yes.
+-> No. <<if true is false>>
+Eden: Yes.
+Abe: Great! Can I borrow your credit card?
+-> No.
+    Eden: No.
+-> Why?
+    Abe: My parents think I spend too much. // of their money.
+    Abe: What a joke.
+    Abe: I wish I didn't have to rely on my them so much.
+    Abe: I wish I was free of them! Just you and me, free! Together. It'd be so much better.
+    -> Better together.
+        Eden: Better together.
+        //empty
+    -> Uh-huh.
+        Eden: Uh-huh.
+        //empty
+    So. Can I borrow your card?
+    -> No.
+        Eden: No.
+        //empty
+Abe: Oh, and after all that. Guess we aren't a team then.
+-> Maybe...
+Eden: How much do you need? I can run over to the ATM. Get some cash.
+Abe: Just a hundred bucks. That's not too much to ask for, right?
+-> Yes.
+    Eden: Yes.
+-> No.
+    Eden: No.
+Abe: Perfect! I'll see you in a few minutes?
+Eden: Okay. How much is a few?
+Abe: Hmm, three?
+Eden: (... what just happened?)
+===
+
+title: Day1Friend
+position: 400, 100
+---
+Friend: Hey! Eden? Where have you been?
+-> Gotta go.
+    Eden: Sorry, I'm in a bit of a rush. I need to use the ATM.
+    Friend: Hey, me too! For both. We'll actually, I'm done.
+    Friend: Can't talk right now, but if you wanna, I'll be at practicing in the rooms, as always. Bye!!
+    <<exit>>
+-> Um.
+    // empty
+-> Ummmm.
+    // empty
+Eden: Um, so. It's complicated?
+Friend: 
+===
+
+title: ATMInit
+position: 200, -100
+---
+<<set $autoadvance = true>>
+ATM: Please insert card.
+-> Insert Card.
+    <<set $autoadvance = true>>
+    ATM: How much to withdraw?
+    [[ATMLoop]]
+-> Leave.
+===
+
+title: ATMLoop
+position: 400, -100
+---
+-> +1.
+    <<set $money = $money + 1>>
+    [[ATMLoop]]
+-> +10.
+    <<set $money = $money + 10>>
+    [[ATMLoop]]
+-> Withdraw.
+    ATM: Bzzzzzz.
+    ATM: Thank you for your patronage!
+    Eden: (Have ${$money} now.)
+===
+
+
+title: Day1End
+position: 600, 100
+---
+Eden: Home.
+Abe: 
+===
