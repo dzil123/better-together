@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://walkabout/Walkabout.gd" type="Script" id=1]
-[ext_resource path="res://walkabout/rooms/Home.tscn" type="PackedScene" id=2]
-[ext_resource path="res://walkabout/rooms/NotHome.tscn" type="PackedScene" id=3]
+[ext_resource path="res://walkabout/rooms/0Apartment.tscn" type="PackedScene" id=2]
+[ext_resource path="res://walkabout/rooms/1Streets.tscn" type="PackedScene" id=3]
 [ext_resource path="res://walkabout/CrudeTimer.gd" type="Script" id=4]
+[ext_resource path="res://walkabout/Timer.gd" type="Script" id=5]
+[ext_resource path="res://addons/godot_yarn_spinner/demo/DialogBox.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "InAndOut"
@@ -52,9 +54,12 @@ tracks/0/keys = {
 }
 
 [node name="Walkabout" type="Node2D"]
-position = Vector2( 1, 0 )
+position = Vector2( 2, 0 )
 script = ExtResource( 1 )
 roomIdToScene = [ ExtResource( 2 ), ExtResource( 3 ) ]
+
+[node name="DialogBox" parent="." instance=ExtResource( 6 )]
+timer_path = NodePath("../Timer")
 
 [node name="PersistentUI" type="CanvasLayer" parent="."]
 
@@ -82,3 +87,6 @@ __meta__ = {
 [node name="FadeToBlack" type="AnimationPlayer" parent="."]
 anims/InAndOut = SubResource( 1 )
 anims/RESET = SubResource( 2 )
+
+[node name="Timer" type="Node" parent="."]
+script = ExtResource( 5 )
