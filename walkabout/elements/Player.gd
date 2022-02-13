@@ -10,6 +10,8 @@ var entrance = 0
 var speed = 400
 var distance = 0
 
+var softlock_hack = 0
+
 
 func _ready():
 	assert(distance_per_footstep > 0)
@@ -24,12 +26,16 @@ func _physics_process(delta):
 	if not movable:
 		return
 
-	if Input.is_action_just_pressed("ui_up"):
+	softlock_hack += delta
+
+	if Input.is_action_just_pressed("ui_up") and softlock_hack > 24 / 60.0:
 		var areas = $PlayerBox.get_overlapping_areas()
 		for area in areas:
 			if area.name == "PortalBox":
 				get_tree().get_root().get_node("Walkabout").goto_room(
-					area.get_parent().goto_room, area.get_parent().goto_entrance
+					area.get_parent().goto_room,
+					area.get_parent().goto_entrance,
+					area.get_parent().door_and_not_path
 				)
 				movable = false
 				return
@@ -53,7 +59,8 @@ func play_footstep():
 	if footsteps.size() == 0:
 		return
 	var sound = footsteps[randi() % footsteps.size()]
-	var pitch = (1.0 / random_pitch) + randf() * (random_pitch - 1.0 / random_pitch)
+	var pitch = (1.0 / random_pitch) + randf() * (random_pitch - 1.0 / random_pitch) * 2
+	# TODO: recall that its a log scale.
 
 	var player = AudioStreamPlayer.new()
 	add_child(player)

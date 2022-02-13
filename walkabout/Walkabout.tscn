@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://walkabout/Walkabout.gd" type="Script" id=1]
 [ext_resource path="res://walkabout/rooms/0Apartment.tscn" type="PackedScene" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/sfx/phone_vibrate.ogg" type="AudioStream" id=20]
 [ext_resource path="res://assets/sfx/door_creak_footsteps.ogg" type="AudioStream" id=21]
 [ext_resource path="res://assets/sfx/drone.ogg" type="AudioStream" id=22]
+[ext_resource path="res://assets/sfx/Concrete 1.wav" type="AudioStream" id=23]
 
 [sub_resource type="DynamicFont" id=5]
 size = 83
@@ -289,8 +290,8 @@ script = ExtResource( 5 )
 [node name="Sounds" type="Node" parent="."]
 script = ExtResource( 17 )
 music_by_day = [ ExtResource( 13 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 10 ) ]
-sfx_names = [ "shake_box", "phone_vibrate", "door_creak" ]
-sfx_files = [ ExtResource( 18 ), ExtResource( 20 ), ExtResource( 21 ) ]
+sfx_names = [ "shake_box", "phone_vibrate", "door_creak", "Concrete 1" ]
+sfx_files = [ ExtResource( 18 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 23 ) ]
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="Sounds"]
 bus = "Music"

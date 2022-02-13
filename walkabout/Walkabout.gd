@@ -23,7 +23,7 @@ func _ready():
 	actually_go()
 
 
-func goto_room(id, entrance):
+func goto_room(id, entrance, door_and_not_path = true):
 	if $FadeToBlack.is_playing():
 		return
 
@@ -33,7 +33,14 @@ func goto_room(id, entrance):
 	# $FadeToBlack.play("InAndOut")  # calls actually_go()
 	$FadeToBlack.play("FadeOut")
 	$FadeToBlack.queue("FadeIn")
-	sounds.playsound("door_creak")
+	if false:
+		# if door_and_not_path:
+		sounds.playsound("door_creak")
+	else:
+		sounds.playsound("Concrete 1", 0)
+		sounds.playsound("Concrete 1", 60 / 320.0)
+		sounds.playsound("Concrete 1", 120 / 320.0)
+		sounds.playsound("Concrete 1", 180 / 320.0)
 
 
 func actually_go():

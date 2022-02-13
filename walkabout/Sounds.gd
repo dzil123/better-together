@@ -42,13 +42,15 @@ func end_music():
 	drone_tween.start()
 
 
-func playsound(name):
+func playsound(name, delay = 0):
 	var sound = sounds_dict[name]
 
 	var player = AudioStreamPlayer.new()
 	add_child(player)
 	player.stream = sound
 	player.bus = "SFX"
+	if delay > 0:
+		yield(get_tree().create_timer(delay), "timeout")
 	player.play()
 	yield(player, "finished")
 	player.queue_free()
