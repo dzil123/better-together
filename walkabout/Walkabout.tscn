@@ -83,3 +83,4 @@ anims/RESET = SubResource( 2 )
 script = ExtResource( 5 )
 
 [connection signal="movement_enabled" from="DialogBox" to="." method="_on_DialogBox_movement_enabled"]
+[connection signal="expired" from="Timer" to="." method="_on_Timer_expired"]

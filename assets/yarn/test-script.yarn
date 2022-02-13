@@ -5,6 +5,7 @@ position: 5,-78
 <<set $confidence_friend = 0>>
 <<set $confidence_bestfriend = 0>>
 <<set $money = 0>>
+<<set $lose = false>>
 ===
 
 title: TestYarn

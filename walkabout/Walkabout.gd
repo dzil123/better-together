@@ -62,3 +62,7 @@ func actually_go():
 func _on_DialogBox_movement_enabled(is_enabled):
 	for player in get_tree().get_nodes_in_group("player"):
 		player.movable = is_enabled
+
+
+func _on_Timer_expired():
+	yarn.set_variable("lose", true)
