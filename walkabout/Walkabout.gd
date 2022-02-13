@@ -28,6 +28,11 @@ func goto_room(id, entrance, door_and_not_path = true):
 	if $FadeToBlack.is_playing():
 		return
 
+	if id == 0 and not yarn.get_variable("door0unlocked"):
+		yarn.set_current_yarn_thread("door0islocked")
+		mainui._step_story()
+		return
+
 	roomId = id
 	tempEntrance = entrance
 
@@ -122,4 +127,5 @@ func AnimationPlayer5WackHardcoded():
 	var node = find_node("AnimationPlayer5WackHardcoded") as AnimationPlayer
 	if node == null:
 		print("NULL AnimationPlayer5WackHardcoded")
+		return
 	node.play("Skedaddle")

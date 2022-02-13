@@ -7,6 +7,7 @@ position: 0,0
 <<set $money = 0>>
 <<set $day_started = -1>>
 <<set $lose = false>>
+<<set $door0unlocked = true>>
 ===
 
 title: TestYarn
