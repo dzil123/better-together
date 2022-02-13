@@ -54,3 +54,8 @@ func actually_go():
 	if tempEntrance != 1:
 		for node in get_tree().get_nodes_in_group("entrance1"):
 			node.queue_free()
+
+
+func _on_DialogBox_movement_enabled(is_enabled):
+	for player in get_tree().get_nodes_in_group("player"):
+		player.movable = is_enabled

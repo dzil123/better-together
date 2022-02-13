@@ -94,3 +94,5 @@ anims/RESET = SubResource( 2 )
 
 [node name="Timer" type="Node" parent="."]
 script = ExtResource( 5 )
+
+[connection signal="movement_enabled" from="DialogBox" to="." method="_on_DialogBox_movement_enabled"]
