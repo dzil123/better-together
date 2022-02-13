@@ -30,7 +30,9 @@ func goto_room(id, entrance):
 	roomId = id
 	tempEntrance = entrance
 
-	$FadeToBlack.play("InAndOut")  # calls actually_go()
+	# $FadeToBlack.play("InAndOut")  # calls actually_go()
+	$FadeToBlack.play("FadeOut")
+	$FadeToBlack.queue("FadeIn")
 	sounds.playsound("door_creak")
 
 

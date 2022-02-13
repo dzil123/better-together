@@ -10,3 +10,8 @@ func _process(delta):
 		self.text += str(key) + "   " + str(dict[key]) + "\n"
 
 	self.text += "day" + "   " + str(walkabout.day) + "\n"
+
+	var player = get_tree().root.find_node("Player")
+	if player != null:
+		self.text += "movable" + "   " + str(player.movable) + "\n"
+		# no clue why this doesn't work

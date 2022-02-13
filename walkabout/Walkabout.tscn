@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://walkabout/Walkabout.gd" type="Script" id=1]
 [ext_resource path="res://walkabout/rooms/0Apartment.tscn" type="PackedScene" id=2]
@@ -32,6 +32,54 @@ use_filter = true
 extra_spacing_char = 6
 extra_spacing_space = 4
 font_data = ExtResource( 19 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "FadeIn"
+length = 0.25
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("PersistentUI/FadeToBlack:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0166667, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "FadeOut"
+length = 0.166667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("PersistentUI/FadeToBlack:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.133333 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.15 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "actually_go"
+} ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "GameOver"
@@ -73,37 +121,6 @@ tracks/2/keys = {
 "values": [ {
 "args": [  ],
 "method": "mainmenu"
-} ]
-}
-
-[sub_resource type="Animation" id=1]
-resource_name = "InAndOut"
-length = 0.3
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/path = NodePath("PersistentUI/FadeToBlack:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.133333, 0.166667, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.15 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "actually_go"
 } ]
 }
 
@@ -259,6 +276,9 @@ __meta__ = {
 [node name="Room" type="Node2D" parent="."]
 
 [node name="FadeToBlack" type="AnimationPlayer" parent="."]
+autoplay = "FadeIn"
+anims/FadeIn = SubResource( 1 )
+anims/FadeOut = SubResource( 7 )
 anims/GameOver = SubResource( 6 )
 anims/InAndOut = SubResource( 1 )
 anims/RESET = SubResource( 2 )

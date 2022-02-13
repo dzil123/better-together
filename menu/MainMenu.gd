@@ -1,6 +1,7 @@
 extends "res://ui/MainUI.gd"
 
 export(GDScript) var yarn_script
+const walkabout_scene = preload("res://walkabout/Walkabout.tscn")
 
 
 func _ready():
@@ -19,4 +20,10 @@ func begin():
 
 
 func run_start():
-	get_tree().change_scene("res://walkabout/Walkabout.tscn")
+	# get_tree().change_scene("res://walkabout/Walkabout.tscn")
+	get_node("../FadeToBlackkkk").play("FadeOut")
+
+
+func actually_go():
+	print("called")
+	get_tree().change_scene_to(walkabout_scene)

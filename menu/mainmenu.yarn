@@ -9,13 +9,14 @@ position: 0,0.5
 ---
 
 <<set $autoadvance = true>>
-Test: Welcome to the game lol
+Test: Better Together?
 
 -> Start
-    Haha yes.
+    <<set $autoadvance = true>>
     << run_start >>
--> Options
-    There are no options
+    Test: \n\n\n\n\n\n\n\n\n\nstalling
+-> Controls
+    WASD or Arrow Keys
 -> Credits
     :Ryan Chang: Programmer, Writer, Lead\nHenry Dang: Artist, Producer\nDaniel Zilberleyb: Programmer
 
