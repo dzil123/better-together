@@ -105,4 +105,9 @@ func _on_DialogBox_movement_enabled(is_enabled):
 
 
 func _on_Timer_expired():
+	end_music()
 	yarn.set_variable("lose", true)
+	mainui.reset()
+	_on_DialogBox_movement_enabled(false)
+	yarn.set_current_yarn_thread("TimeOut")
+	mainui._step_story()

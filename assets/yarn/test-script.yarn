@@ -545,6 +545,7 @@ position: 200, 300
 title: TimeOut
 position: 600, -100
 ---
+<<wait 2>>
 Eden: Ah.
 Eden: I think.
 Eden: (that)
