@@ -20,6 +20,7 @@ Test: Oh.
 
 Test: Hopefully this was a good test.
 Test: The time is {$time_sec}.
+<<set $autoadvance = true>>
 Test: You have this much money {$money}.
 
 <<you_get_the_point>>

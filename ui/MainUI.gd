@@ -27,6 +27,7 @@ func _init():
 func _ready():
 	options_list.connect("select_option", self, "_on_select_option")
 	yarn.set_variable("time_sec", 123)
+	yarn.set_variable("autoadvance", false)
 	yarn.set_current_yarn_thread("Start")
 	while yarn.current_function != "":
 		_step_story()
@@ -54,8 +55,9 @@ func _on_YarnStory_dialogue(yarn_node, actor, message):
 	emit_signal("movement_enabled", false)
 
 
-func _on_DialogText_Label_line_complete():
-	if !block_progress:
+func _on_DialogText_Label_line_complete(complete = true):
+	if (complete or yarn.get_variable("autoadvance")) and (not block_progress):
+		yarn.set_variable("autoadvance", false)
 		_step_story()
 
 
@@ -70,6 +72,7 @@ func _on_select_option(option):
 	block_progress = false
 	in_dialog = true
 	emit_signal("movement_enabled", false)
+	yarn.set_variable("autoadvance", false)
 	_step_story(option)
 
 

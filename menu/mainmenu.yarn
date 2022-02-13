@@ -1,13 +1,14 @@
 title: Start
 position: 5,-78
 ---
-<<set $money = 0>>
+<<set $autoadvance = false>>
 ===
 
 title: Begin
 position: 0,0.5
 ---
 
+<<set $autoadvance = true>>
 Test: Welcome to the game lol
 
 -> Start
@@ -15,5 +16,7 @@ Test: Welcome to the game lol
     << run_start >>
 -> Options
     There are no options
+-> Credits
+    :Ryan Chang: Programmer, Writer\nHenry Dang: Producer\nDaniel Zilberleyb: Programmer
 
 ===
