@@ -125,7 +125,7 @@ Neighbor: Aw. Too bad. See you around sometime!
 ===
 
 title: Day0End
-position: 50,0
+position: 60,0
 ---
 Abe: You got it?
 Eden: Yeah.
@@ -136,5 +136,12 @@ Eden: I don't know yet.
 Abe: Here, lemme have it.
 <<playsound shake_box>>
 Abe: Sounds like a bunch of junk.
-Abe: Well, we can just 
+Abe: We can just leave it then.
+Eden: Yeah, I guess.
+Abe: Doesn't seem like they cared. But I do, right?
+Eden: Right.
+Abe: Alright. Love you.
 ===
+
+// title: Day1End
+// position: 
