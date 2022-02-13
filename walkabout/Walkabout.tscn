@@ -70,7 +70,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DialogBox" parent="." instance=ExtResource( 6 )]
+[node name="MainUI" parent="." instance=ExtResource( 6 )]
 timer_path = NodePath("../Timer")
 
 [node name="Room" type="Node2D" parent="."]
@@ -82,5 +82,5 @@ anims/RESET = SubResource( 2 )
 [node name="Timer" type="Node" parent="."]
 script = ExtResource( 5 )
 
-[connection signal="movement_enabled" from="DialogBox" to="." method="_on_DialogBox_movement_enabled"]
+[connection signal="movement_enabled" from="MainUI" to="." method="_on_DialogBox_movement_enabled"]
 [connection signal="expired" from="Timer" to="." method="_on_Timer_expired"]

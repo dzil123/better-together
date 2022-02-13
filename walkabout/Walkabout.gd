@@ -1,23 +1,23 @@
 extends Node2D
 
 export(Array, PackedScene) var roomIdToScene = []
-
-var day = 0
+export(Array, AudioStreamSample) var music_by_day = []
+export(Array, int) var timer_seconds_by_day = []
 export(int) var roomId = 0
 
-var can_reset_timer = true
+var tempEntrance
+var day = 0
 
 onready var timer = $Timer
 onready var yarn = find_node("YarnStory")
+onready var mainui = $MainUI
 
 
 func _ready():
-	# roomId = 0
+	assert(music_by_day.size() == timer_seconds_by_day.size())
 	tempEntrance = -1
+	mainui.add_command(self, "set_day")
 	actually_go()
-
-
-var tempEntrance
 
 
 func goto_room(id, entrance):
@@ -57,6 +57,11 @@ func actually_go():
 
 	timer.room_safe = roomId == 0
 	yarn.set_variable("day", day)
+
+
+func set_day(new_day):
+	print("SETTING DAY TO ", day)
+	day = new_day
 
 
 func _on_DialogBox_movement_enabled(is_enabled):
