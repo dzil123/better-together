@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://walkabout/elements/Player.gd" type="Script" id=2]
+[ext_resource path="res://assets/sfx/Concrete 1.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sfx/Concrete 2.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 64 )
@@ -9,6 +11,9 @@ extents = Vector2( 32, 64 )
 [node name="Player" type="Node2D" groups=["player"]]
 position = Vector2( 1, 0 )
 script = ExtResource( 2 )
+distance_per_footstep = 200.0
+footsteps = [ ExtResource( 3 ), ExtResource( 4 ) ]
+random_pitch = 1.2
 
 [node name="VisualStuff" type="Node2D" parent="."]
 

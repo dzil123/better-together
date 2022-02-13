@@ -1,5 +1,6 @@
 extends Label
 
+
 func _process(delta):
 	var dict = get_parent().get_parent().find_node("YarnStory").variables
 	var walkabout = get_parent().get_parent()

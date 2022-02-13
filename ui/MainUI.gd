@@ -25,6 +25,7 @@ func _init():
 
 
 func _ready():
+	randomize()
 	options_list.connect("select_option", self, "_on_select_option")
 	yarn.set_variable("time_sec", 123)
 	yarn.set_variable("autoadvance", false)
@@ -50,13 +51,18 @@ func _step_story(value = null):
 
 
 func add_command(obj, name):
-	commands[name] = funcref(self, name)
+	commands[name] = funcref(obj, name)
 
 
 func _on_YarnStory_dialogue(yarn_node, actor, message):
+	if is_debug():
+		call_deferred("_step_story")
+		return
+
 	topbox.visible = true
 	in_dialog = true
 	emit_signal("movement_enabled", false)
+	$TopBox/DialogBox/DialogText._on_YarnStory_dialogue(yarn_node, actor, message)
 
 
 func _on_DialogText_Label_line_complete(complete = true):
@@ -66,6 +72,10 @@ func _on_DialogText_Label_line_complete(complete = true):
 
 
 func _on_YarnStory_options(yarn_node, options):
+	if is_debug():
+		call_deferred("_on_select_option", options[0])
+		return
+
 	block_progress = true
 	in_dialog = true
 	emit_signal("movement_enabled", false)
@@ -94,3 +104,7 @@ func string_to_bool(s):
 		return false
 	else:
 		push_error("fail")
+
+
+func is_debug():
+	return Input.is_key_pressed(KEY_SHIFT)
