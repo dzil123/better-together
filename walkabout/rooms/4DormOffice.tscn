@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://walkabout/elements/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://walkabout/elements/Portal.tscn" type="PackedScene" id=2]
+[ext_resource path="res://walkabout/elements/Task.tscn" type="PackedScene" id=3]
 
 [node name="Home" type="Node2D"]
 
@@ -35,3 +36,6 @@ text = "Home?"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Task" parent="." instance=ExtResource( 3 )]
+position = Vector2( 284, -50 )

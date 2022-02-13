@@ -16,7 +16,7 @@ func _ready():
 func _physics_process(delta):
 	if not movable:
 		return
-	
+
 	if Input.is_action_just_pressed("ui_up"):
 		var areas = $PlayerBox.get_overlapping_areas()
 		for area in areas:
@@ -24,6 +24,7 @@ func _physics_process(delta):
 				get_tree().get_root().get_node("Walkabout").goto_room(
 					area.get_parent().goto_room, area.get_parent().goto_entrance
 				)
+				movable = false
 				return
 
 	var vx = 0
