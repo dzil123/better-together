@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://walkabout/elements/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://walkabout/elements/Portal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://walkabout/elements/Task.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/ATM.png" type="Texture" id=4]
 
 [node name="Home" type="Node2D"]
 
@@ -38,4 +39,10 @@ __meta__ = {
 }
 
 [node name="Task" parent="." instance=ExtResource( 3 )]
-position = Vector2( 284, -50 )
+position = Vector2( 285, 1 )
+
+[node name="Icon" parent="Task/VisualStuff" index="0"]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 4 )
+
+[editable path="Task"]

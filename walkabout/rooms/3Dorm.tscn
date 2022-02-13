@@ -42,7 +42,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Friend" parent="." groups=["day0", "entrance1"] instance=ExtResource( 3 )]
+[node name="Neighbor" parent="." groups=["day0", "entrance1"] instance=ExtResource( 3 )]
 position = Vector2( -104, 0 )
 auto_talk = true
-yarn_node = "TestYarn"
+yarn_node = "Day0Neighbor"

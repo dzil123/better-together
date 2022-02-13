@@ -32,3 +32,90 @@ Test: You have this much money {$money}.
     This is impossible since you have no money.
 
 ===
+
+title: Day0Start
+position: 30,0
+---
+
+Abe: Hey, it's the weekend. Where are you headed?
+-> Package.
+    Eden: I'm picking up a package.
+Abe: There weren't any deliveries today.
+Eden: Oh, it was delivered to my dorm.
+Abe: Didn't I tell you you could just deliver it here?
+-> Mistake.
+    Eden: It was a mistake.
+    Abe: That's a stupid mistake. You practically live here now.
+    Eden: Yeah. Sorry.
+    Eden: Well, actually.
+-> Parents.
+-> ...
+    Eden: ...
+    Abe: Well?
+Eden: Its from my parents. They sent it a while ago.
+Eden: I've been thinking about it for a while.
+Abe: Even after you cut them out? After you came out to them and they rejected you?
+Abe: You're safe with me. Family is meaningless.
+<<set $autoadvance = true>>
+Eden: I'm not sure. Maybe, they ha
+Abe: Meaningless.
+Eden: What if it was expensive?
+Abe: ...
+Abe: Fine. I'll come with you.
+Eden: Its not that far. I'll only take five minutes.
+Abe: Hm. Two minutes.
+Eden: Three.
+Abe: Fine.
+===
+
+title: Day0Neighbor
+position: 40,0
+---
+Neighbor: Hey Eden! Haven't seen you in a while.
+Neighbor: Weird, since you live in the room across from me.
+-> Gotta go.
+    [[GottaGoNeighbor]]
+-> Yeah.
+    Eden: Yeah.
+    Neighbor: Oh. Bad luck then, huh?
+-> Been staying with boyfriend.
+    Eden: I've been staying with a partner.
+    Neighbor: I see. How long?
+    Eden: Been a few weeks now.
+    Neighbor: That checks out.
+
+Neighbor: The whole floor is watching a movie tonight, Do you want to come?
+-> Gotta go.
+    [[GottaGoNeighbor]]
+-> Busy with school.
+    Eden: Sorry, I've got a lot of homework.
+    Neighbor: Aww, too bad. Well, have fun with that!
+    Eden: I'll try.
+-> Made plans already.
+    Eden: I can't. My boyfriend wants me to stay overnight.
+    Neighbor: Alright. Hope you two have fun!
+    Eden: Yeah.
+Neighbor: Well, hope to see you around more often!
+===
+
+title: GottaGoNeighbor
+position: 50,0
+---
+Eden: Sorry, I'm in a bit of a rush. I gotta go right now.
+Neighbor: Aw. Too bad. See you around sometime!
+===
+
+title: Day0End
+position: 50,0
+---
+Abe: You got it?
+Eden: Yeah.
+Abe: Didn't talk to anyone?
+Eden: No.
+Abe: Good. You're too good for them. So what's in the box?
+Eden: I don't know yet.
+Abe: Here, lemme have it.
+<<playsound shake_box>>
+Abe: Sounds like a bunch of junk.
+Abe: 
+===

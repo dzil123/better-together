@@ -59,7 +59,6 @@ tracks/0/keys = {
 position = Vector2( 2, 0 )
 script = ExtResource( 1 )
 roomIdToScene = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ]
-roomId = 4
 
 [node name="PersistentUI" type="CanvasLayer" parent="."]
 
