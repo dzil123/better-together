@@ -81,8 +81,9 @@ func _input(event):
 
 
 func set_day(new_day):
-	print("SETTING DAY TO ", day)
-	day = new_day
+	print("SETTING DAY TO ", new_day)
+	yarn.set_variable("day", int(new_day))
+	day = int(new_day)
 
 
 func start_music():
