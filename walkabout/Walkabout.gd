@@ -20,6 +20,7 @@ func _ready():
 	mainui.add_command(self, "gameover", false)
 	mainui.add_command(sounds, "playsound")
 	mainui.add_command(self, "playsoundsync", false)
+	mainui.add_command(self, "AnimationPlayer5WackHardcoded")
 	actually_go()
 
 
@@ -116,3 +117,9 @@ func playsoundsync(name):
 
 func mainmenu():
 	get_tree().change_scene("res://menu/MainMenu.tscn")
+
+func AnimationPlayer5WackHardcoded():
+	var node = find_node("AnimationPlayer5WackHardcoded") as AnimationPlayer
+	if node == null:
+		print("NULL AnimationPlayer5WackHardcoded")
+	node.play("Skedaddle")

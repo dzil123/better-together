@@ -90,7 +90,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer5WackHardcoded" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Friend")
 anims/RESET = SubResource( 2 )
 anims/Skedaddle = SubResource( 3 )
