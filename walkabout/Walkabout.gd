@@ -1,16 +1,19 @@
 extends Node2D
 
 export(Array, PackedScene) var roomIdToScene = []
-export(Array, AudioStreamSample) var music_by_day = []
+export(Array, AudioStream) var music_by_day = []
 export(Array, int) var timer_seconds_by_day = []
 export(int) var roomId = 0
 
 var tempEntrance
 var day = 0
+var music_is_playing = false
 
 onready var timer = $Timer
 onready var yarn = find_node("YarnStory")
 onready var mainui = $MainUI
+onready var music_player = $MusicPlayer as AudioStreamPlayer
+onready var music_animator = $MusicPlayer/AnimationPlayer as AnimationPlayer
 
 
 func _ready():
@@ -55,13 +58,44 @@ func actually_go():
 		for node in get_tree().get_nodes_in_group("entrance1"):
 			node.queue_free()
 
+	timer.starting_seconds = timer_seconds_by_day[day]
 	timer.room_safe = roomId == 0
 	yarn.set_variable("day", day)
+
+	if timer.timer > 0:
+		if roomId == 0 and music_is_playing:
+			end_music()
+		if roomId != 0 and not music_is_playing:
+			start_music()
+
+
+func _input(event):
+	if event is InputEventKey and event.pressed:
+		match event.scancode:
+			KEY_O:
+				start_music()
+			KEY_P:
+				end_music()
+			KEY_I:
+				set_day(day + 1)
 
 
 func set_day(new_day):
 	print("SETTING DAY TO ", day)
 	day = new_day
+
+
+func start_music():
+	music_is_playing = true
+	music_animator.stop()
+	music_player.stream = music_by_day[day]
+	music_player.volume_db = 0
+	music_player.play()
+
+
+func end_music():
+	music_is_playing = false
+	music_animator.play("fadeout")
 
 
 func _on_DialogBox_movement_enabled(is_enabled):

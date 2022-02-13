@@ -1,6 +1,6 @@
 extends Node
 
-export(float) var starting_minutes = 3
+export(float) var starting_seconds = 180
 
 var timer = 0  # sec, float
 var room_safe = false
@@ -9,7 +9,7 @@ signal expired
 
 
 func _ready():
-	timer = starting_minutes * 60
+	reset()
 
 
 func _physics_process(delta):
@@ -24,7 +24,7 @@ func _physics_process(delta):
 
 
 func reset():
-	timer = starting_minutes * 60
+	timer = starting_seconds
 
 
 func get_timer_text():

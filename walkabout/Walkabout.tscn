@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://walkabout/Walkabout.gd" type="Script" id=1]
 [ext_resource path="res://walkabout/rooms/0Apartment.tscn" type="PackedScene" id=2]
@@ -8,6 +8,10 @@
 [ext_resource path="res://walkabout/rooms/2Campus.tscn" type="PackedScene" id=7]
 [ext_resource path="res://walkabout/rooms/3Dorm.tscn" type="PackedScene" id=8]
 [ext_resource path="res://walkabout/rooms/4DormOffice.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/music/Fantaisie - Impromptu, Op. 66.mp3" type="AudioStream" id=10]
+[ext_resource path="res://assets/music/Etude Op. 25 no. 11 in A minor - 'Winter Wind'.mp3" type="AudioStream" id=11]
+[ext_resource path="res://assets/music/Etude Op. 10, no. 12 in C minor - 'Revolutionary'.mp3" type="AudioStream" id=12]
+[ext_resource path="res://assets/music/Etude Op. 10, no. 4 in C sharp minor - 'Torrent'.mp3" type="AudioStream" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "InAndOut"
@@ -55,10 +59,57 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ) ]
 }
 
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "fadeout"
+length = 4.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4, 4.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -80.0, -80.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 4.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop"
+} ]
+}
+
 [node name="Walkabout" type="Node2D"]
 position = Vector2( 2, 0 )
 script = ExtResource( 1 )
 roomIdToScene = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ]
+music_by_day = [ ExtResource( 12 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 13 ) ]
+timer_seconds_by_day = [ 120, 180, 150, 120 ]
 
 [node name="PersistentUI" type="CanvasLayer" parent="."]
 
@@ -81,6 +132,14 @@ anims/RESET = SubResource( 2 )
 
 [node name="Timer" type="Node" parent="."]
 script = ExtResource( 5 )
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+bus = "Music"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MusicPlayer"]
+autoplay = "RESET"
+anims/RESET = SubResource( 4 )
+anims/fadeout = SubResource( 3 )
 
 [connection signal="movement_enabled" from="MainUI" to="." method="_on_DialogBox_movement_enabled"]
 [connection signal="expired" from="Timer" to="." method="_on_Timer_expired"]
