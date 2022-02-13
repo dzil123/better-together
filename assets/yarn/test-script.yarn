@@ -110,6 +110,7 @@ position: 400,0
 ---
 Neighbor: Hey Eden! Haven't seen you in a while.
 Neighbor: Weird, since you live in the room across from me.
+<<set $connect_the_dots = false>>
 -> Yeah.
     Eden: Yeah.
     Neighbor: Bad luck then, huh?
@@ -117,6 +118,7 @@ Neighbor: Weird, since you live in the room across from me.
     Eden: I've been staying with a partner.
     Neighbor: I see. How long?
     Eden: Been a few weeks now.
+    <<set $connect_the_dots = true>>
     Neighbor: That checks out.
 -> Gotta go.
     [[GottaGoNeighbor]]
@@ -124,8 +126,30 @@ Neighbor: Weird, since you live in the room across from me.
 Neighbor: The whole floor is watching a movie tonight, Do you want to come?
 -> Busy with school.
     Eden: Sorry, I've got a lot of homework.
-    Neighbor: Aww, too bad. Well, have fun with that!
-    Eden: I'll try.
+    Neighbor: Yup. Same. Hey, we're in the same classes, right?
+    Neighbor: (well, i haven't seen you that often there, but)
+    Neighbor: I have in a study group, do you wanna join?
+    -> I work alone.
+        Eden: I prefer to work alone, sorry.
+        Neighbor: Ahhh, I see, very rigorous. That's cool.
+        Neighbor: But it's too bad. Well, have fun with that!
+        Eden: I'll try.
+    -> Haven't been going.
+        Eden: I haven't been going to class for a while. I'm really behind.
+        Neighbor: Yup, I get that.
+        <<if $connect_the_dots == true>>
+            Neighbor: How far behind are you? A few weeks?
+            -> Yes.
+        <<endif>>
+        Eden: Haha, yup. Gotta catch up. On my own.
+        Eden: Would probably boring for a group.
+        Neighbor: Too bad.
+        <<if $connect_the_dots == true>>
+            Neighbor: (Hmm.)
+        <<endif>>
+    -> Gotta go.
+        [[GottaGoNeighbor]]
+
 -> Made plans already.
     Eden: I can't. My boyfriend wants me to stay overnight.
     Neighbor: Alright. You two have something planned?
@@ -139,7 +163,7 @@ Neighbor: Well, Hope to see you around more often!
 title: GottaGoNeighbor
 position: 600,0
 ---
-Eden: Sorry, I'm in a bit of a rush. I gotta go right now.
+Eden: Sorry, I'm in a bit of a rush. I have to go right now.
 Neighbor: Aw. Too bad. See you around sometime!
 ===
 
@@ -216,7 +240,7 @@ Abe: Great! Can I borrow your credit card?
         //empty
 Abe: Oh, and after all that. Guess we aren't a team then.
 -> Maybe...
-Eden: How much do you need? I can run over to the ATM. Get some cash.
+Eden: How much do you need? I can run over to the ATM at the plaza. Get some cash.
 Abe: Just a hundred bucks. That's not too much to ask for, right?
 -> Yes.
     Eden: Yes.
@@ -234,15 +258,21 @@ position: 400, 100
 Friend: Hey! Eden? Where have you been?
 -> Gotta go.
     Eden: Sorry, I'm in a bit of a rush. I need to use the ATM.
-    Friend: Hey, me too! For both. We'll actually, I'm done.
-    Friend: Can't talk right now, but if you wanna, I'll be at practicing in the rooms, as always. Bye!!
+    Friend: Heyyy, me too! For both. Well actually, I'm done.
+    Friend: Can't talk right now. If you wanna, I'll be at practicing in the rooms. As always. Bye!!
     <<exit>>
 -> Um.
     // empty
 -> Ummmm.
     // empty
-Eden: Um, so. It's complicated?
-Friend: 
+Eden: Um... So... It's complicated?
+Friend: Complicated! Complicated is good. Listen, I'm in a hurry so meet me in the practice rooms, alright? I'll be there as always. Bye!!
+===
+
+title: Day1FriendLeave
+position: 600, 100
+---
+Eden: The practice rooms. Past the dorms and the student plaza.
 ===
 
 title: ATMInit
@@ -277,5 +307,31 @@ title: Day1End
 position: 600, 100
 ---
 Eden: Home.
-Abe: 
+Abe: You got it?
+<<set $money = 0>>
+Eden: (Have $0 now...)
+Abe: Thanks! You're the best.
+Eden: (yeah. mmm-hmm)
+Abe: Hey, are you okay?
+Abe: I'm sorry for this morning.
+Abe: I shouldn't have said we weren't a team. // bro what the fuck
+Abe: Because we are.
+Abe: I was thinking we could go out somewhere.
+Abe: Somewhere nice. Somewhere expensive. Fancy restaurant? // bro what the fuck
+Abe: I love you.
+-> Love you too. <<if true == false>>
+-> Thanks. <<if true == false>>
+-> ...
+Eden: (i think i will just go lie in bed.)
+Abe: Aw, ok. Do you want some of these snacks? // :upside_down:
+===
+
+
+title: Lose
+position: 600, -100
+---
+Eden: Ah.
+Eden: I think.
+Eden: (that)
+Eden: (i should be going.)
 ===
