@@ -1,0 +1,19 @@
+title: Start
+position: 5,-78
+---
+<<set $money = 0>>
+===
+
+title: Begin
+position: 0,0.5
+---
+
+Test: Welcome to the game lol
+
+-> Start
+    Haha yes.
+    << run_start >>
+-> Options
+    There are no options
+
+===

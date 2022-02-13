@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.yarn"
+type="GDScript"
+path="res://.import/mainmenu.yarn-454f26693df6b7b56b2358f112aeb512.gd"
+
+[deps]
+
+source_file="res://menu/mainmenu.yarn"
+dest_files=[ "res://.import/mainmenu.yarn-454f26693df6b7b56b2358f112aeb512.gd" ]
+
+[params]
+
