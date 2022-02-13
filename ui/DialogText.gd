@@ -23,6 +23,7 @@ func _input(event):
 func on_activate():
 	if !is_line_complete():
 		show_full_text()
+		emit_signal("line_complete", false)
 	else:
 		emit_signal("line_complete")
 
@@ -35,7 +36,8 @@ func is_line_complete():
 	return visible_characters >= get_total_character_count() or visible_characters < 0
 
 
-func start_dialog(dialog_text):
+func start_dialog(dialog_text: String):
+	dialog_text = dialog_text.c_unescape()
 	set_bbcode(dialog_text)
 	set_visible_characters(0)
 
@@ -45,6 +47,8 @@ func _on_Timer_timeout():
 	if is_line_complete():
 		return
 	visible_characters += 1
+	if is_line_complete():
+		emit_signal("line_complete", false)
 
 
 func _on_YarnStory_dialogue(_yarn_node, _actor, message):

@@ -184,7 +184,7 @@ func parse_body(file: File, indent_level := 0) -> Array:
 			# Normal dialogue (not a comment)
 			# Syntax:
 			# <Actor>: <Message>
-			var dialogue = line.content.split(":")
+			var dialogue = line.content.split(":", true, 1)
 			var node = YarnDialogue.new()
 			if dialogue.size() == 2:
 				# Actor mentioned
