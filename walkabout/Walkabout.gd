@@ -8,6 +8,7 @@ export(int) var roomId = 0
 var can_reset_timer = true
 
 onready var timer = $Timer
+onready var yarn = find_node("YarnStory")
 
 
 func _ready():
@@ -27,7 +28,6 @@ func goto_room(id, entrance):
 	tempEntrance = entrance
 
 	$FadeToBlack.play("InAndOut")  # calls actually_go()
-	timer.room_safe = roomId == 0
 
 
 func actually_go():
@@ -54,6 +54,9 @@ func actually_go():
 	if tempEntrance != 1:
 		for node in get_tree().get_nodes_in_group("entrance1"):
 			node.queue_free()
+
+	timer.room_safe = roomId == 0
+	yarn.set_variable("day", day)
 
 
 func _on_DialogBox_movement_enabled(is_enabled):

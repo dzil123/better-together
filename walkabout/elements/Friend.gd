@@ -28,7 +28,7 @@ func _physics_process(delta):
 			):
 				started_auto_talk = true
 
-				var yarn = get_walkabout().find_node("YarnStory")
+				var yarn = get_walkabout().yarn
 				yarn.set_current_yarn_thread(yarn_node)
 				yarn.step_through_story()
 

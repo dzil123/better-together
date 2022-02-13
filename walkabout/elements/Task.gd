@@ -26,7 +26,7 @@ func _physics_process(delta):
 		if area.name == "PlayerBox":
 			nearby = true
 			if Input.is_action_just_pressed("ui_up"):
-				var yarn = get_walkabout().find_node("YarnStory")
+				var yarn = get_walkabout().yarn
 				yarn.set_variable(yarn_bool, true)
 
 				# self.queue_free()
