@@ -14,11 +14,25 @@ func get_walkabout():
 
 
 func _physics_process(delta):
-	if auto_talk and not started_auto_talk:
-		for area in $FriendBox.get_overlapping_areas():
-			if area.name == "PlayerBox":
+	var nearby = false
+	var player_hack = null
+
+	for area in $FriendBox.get_overlapping_areas():
+		if area.name == "PlayerBox":
+			nearby = true
+			player_hack = area.get_parent()
+
+			if (
+				(auto_talk and not started_auto_talk)
+				or (Input.is_action_just_pressed("ui_up") and player_hack.movable)
+			):
 				started_auto_talk = true
 
 				var yarn = get_walkabout().find_node("YarnStory")
 				yarn.set_current_yarn_thread(yarn_node)
 				yarn.step_through_story()
+
+	$VisualStuff/InteractablePrompt.visible = (
+		nearby
+		and (player_hack != null and player_hack.movable)
+	)
