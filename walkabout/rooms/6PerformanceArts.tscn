@@ -27,7 +27,8 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Background"]
-position = Vector2( 0, -30 )
+position = Vector2( 0, -400 )
+scale = Vector2( 3, 8 )
 texture = SubResource( 1 )
 
 [node name="Portal" parent="." instance=ExtResource( 2 )]

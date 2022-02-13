@@ -74,7 +74,7 @@ position: 0,100
         <<set $real_talk = false>>
         [[Day2Start]]
     <<endif>>
-    <<if $time <= 485>>
+    <<if $time_sec <= 485>>
         [[Day2End]]
     <<else>>
         [[Day2Return]]
@@ -533,6 +533,11 @@ Eden: Okay.
 ===
 
 title: Day3Start
+position: 200, 300
+---
+===
+
+title: Day3End
 position: 200, 300
 ---
 ===

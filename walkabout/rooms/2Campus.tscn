@@ -1,7 +1,23 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://walkabout/elements/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://walkabout/elements/Portal.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/Dorm Room.png" type="Texture" id=3]
+[ext_resource path="res://assets/Plaza.png" type="Texture" id=4]
+[ext_resource path="res://assets/Store.png" type="Texture" id=5]
+[ext_resource path="res://assets/tree.png" type="Texture" id=6]
+[ext_resource path="res://assets/Road.png" type="Texture" id=7]
+[ext_resource path="res://walkabout/rooms/trickery.gd" type="Script" id=8]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 6
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 1e+06, 100 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 100, 250, 200, 100 )
 
 [node name="NotHome" type="Node2D"]
 
@@ -15,24 +31,73 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Sprite" type="Sprite" parent="ColorRect"]
+position = Vector2( 0, 970 )
+texture = SubResource( 1 )
+
 [node name="Portal" parent="." instance=ExtResource( 2 )]
 goto_room = 1
 goto_entrance = 1
 
+[node name="Sprite2" parent="Portal" index="0"]
+position = Vector2( -7, -66 )
+scale = Vector2( 1, 1 )
+texture = SubResource( 2 )
+
+[node name="Label" parent="Portal" index="2"]
+text = "1 1
+0"
+
 [node name="Portal2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 900, 0 )
+position = Vector2( 1024, 0 )
 goto_room = 3
 my_entrance = 1
 
+[node name="Sprite2" parent="Portal2" index="0"]
+position = Vector2( 17, -80 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 3 )
+
+[node name="Label" parent="Portal2" index="2"]
+text = "3 0
+1"
+
 [node name="Portal3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1800, 0 )
+position = Vector2( 2048, 0 )
 goto_room = 5
-my_entrance = 1
+my_entrance = 2
+
+[node name="Sprite2" parent="Portal3" index="0"]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 4 )
+
+[node name="Label" parent="Portal3" index="2"]
+text = "5 0
+2"
 
 [node name="Portal4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 2700, 0 )
+position = Vector2( 3072, 0 )
 goto_room = 6
-my_entrance = 1
+my_entrance = 3
+
+[node name="Sprite2" parent="Portal4" index="0"]
+position = Vector2( -10, -80 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 5 )
+
+[node name="Label" parent="Portal4" index="2"]
+text = "6 0
+3"
+
+[node name="ColorRect2" type="ColorRect" parent="Portal4"]
+margin_left = -25.0
+margin_top = -85.0
+margin_right = 25.0
+margin_bottom = -65.0
+color = Color( 0.180392, 0.286275, 0.215686, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
@@ -49,3 +114,53 @@ text = "Not Home"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="trickery" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="Portal5" parent="trickery" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( -940, 0 )
+goto_room = 6
+my_entrance = 300
+
+[node name="Sprite2" parent="trickery/Portal5" index="0"]
+position = Vector2( -10, -80 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 5 )
+
+[node name="Label" parent="trickery/Portal5" index="2"]
+text = "6 0
+300"
+
+[node name="ColorRect2" type="ColorRect" parent="trickery/Portal5"]
+margin_left = -25.0
+margin_top = -85.0
+margin_right = 25.0
+margin_bottom = -65.0
+color = Color( 0.180392, 0.286275, 0.215686, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Portal6" parent="trickery" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 4096, 0 )
+goto_room = 1
+goto_entrance = 1
+
+[node name="Sprite2" parent="trickery/Portal6" index="0"]
+position = Vector2( -7, -66 )
+scale = Vector2( 1, 1 )
+texture = SubResource( 2 )
+
+[node name="Label" parent="trickery/Portal6" index="2"]
+text = "1 1
+0"
+
+[editable path="Portal"]
+[editable path="Portal2"]
+[editable path="Portal3"]
+[editable path="Portal4"]
+[editable path="trickery/Portal5"]
+[editable path="trickery/Portal6"]

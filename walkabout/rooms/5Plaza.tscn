@@ -71,6 +71,8 @@ scale = Vector2( 1, 1 )
 texture = ExtResource( 6 )
 
 [node name="Portal" parent="." instance=ExtResource( 2 )]
+goto_room = 2
+goto_entrance = 3
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 

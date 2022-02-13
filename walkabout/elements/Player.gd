@@ -7,7 +7,7 @@ export(float, 1, 16, 0.01) var random_pitch = 1
 var movable = true
 var entrance = 0
 
-var speed = 800
+var speed = 400
 var distance = 0
 
 
@@ -39,8 +39,8 @@ func _physics_process(delta):
 		vx -= speed
 	if Input.is_action_pressed("ui_right"):
 		vx += speed
-	position.x += vx * delta
-	distance += abs(vx * delta)
+	position.x += vx * delta * (2 if Input.is_key_pressed(KEY_MINUS) else 1)
+	distance += abs(vx * delta * 2)
 
 
 func _process(delta):
