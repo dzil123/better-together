@@ -30,4 +30,6 @@ Test: The time is {$time_sec}.
 -> Option 4
     I don't think we'll need four options, but here you go.
 
+<<exit>>
+
 ===

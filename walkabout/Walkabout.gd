@@ -3,7 +3,7 @@ extends Node2D
 export(Array, PackedScene) var roomIdToScene = []
 
 var day = 0
-var roomId = 0
+export(int) var roomId = 0
 
 var can_reset_timer = true
 
@@ -11,7 +11,7 @@ onready var timer = $Timer
 
 
 func _ready():
-	roomId = 0
+	# roomId = 0
 	tempEntrance = -1
 	actually_go()
 
@@ -36,4 +36,21 @@ func actually_go():
 	var newRoom = roomIdToScene[roomId].instance()
 	newRoom.name = "Room"  # eh
 	newRoom.get_node("Player").entrance = tempEntrance
+
 	add_child(newRoom)
+
+	if day != 0:
+		for node in get_tree().get_nodes_in_group("day0"):
+			node.queue_free()
+	if day != 1:
+		for node in get_tree().get_nodes_in_group("day1"):
+			node.queue_free()
+	if day != 2:
+		for node in get_tree().get_nodes_in_group("day2"):
+			node.queue_free()
+	if day != 3:
+		for node in get_tree().get_nodes_in_group("day3"):
+			node.queue_free()
+	if tempEntrance != 1:
+		for node in get_tree().get_nodes_in_group("entrance1"):
+			node.queue_free()

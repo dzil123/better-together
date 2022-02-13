@@ -22,8 +22,8 @@ func _init():
 
 func _ready():
 	options_list.connect("select_option", self, "_on_select_option")
-	yarn.set_current_yarn_thread("TestYarn")
-	yarn.step_through_story()
+	# yarn.set_current_yarn_thread("TestYarn")
+	# yarn.step_through_story()
 
 
 func _process(delta):
@@ -44,7 +44,7 @@ func _on_YarnStory_dialogue(yarn_node, actor, message):
 func _on_DialogText_Label_line_complete():
 	print("foo")
 	if !block_progress:
-		yarn.step_through_story()
+		_step_story()
 
 
 func _on_YarnStory_options(yarn_node, options):
@@ -54,7 +54,7 @@ func _on_YarnStory_options(yarn_node, options):
 
 func _on_select_option(option):
 	block_progress = false
-	yarn.step_through_story(option)
+	_step_story(option)
 
 
 func _on_YarnStory_command(yarn_node, command, parameters):
