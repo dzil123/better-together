@@ -1,12 +1,19 @@
 extends Node2D
 
+export(float, EXP) var distance_per_footstep = 1
+export(Array, AudioStream) var footsteps = []
+export(float, 1, 16, 0.01) var random_pitch = 1
+
 var movable = true
 var entrance = 0
 
 var speed = 400
+var distance = 0
 
 
 func _ready():
+	assert(distance_per_footstep > 0)
+
 	for portal in get_tree().get_nodes_in_group("Portal"):
 		if portal.my_entrance == entrance:
 			self.position = portal.position
@@ -32,4 +39,27 @@ func _physics_process(delta):
 		vx -= speed
 	if Input.is_action_pressed("ui_right"):
 		vx += speed
-	position.x += vx * delta
+	position.x += vx * delta * (2 if Input.is_key_pressed(KEY_MINUS) else 1)
+	distance += abs(vx * delta * 2)
+
+
+func _process(delta):
+	while distance > distance_per_footstep:
+		distance -= distance_per_footstep
+		play_footstep()
+
+
+func play_footstep():
+	if footsteps.size() == 0:
+		return
+	var sound = footsteps[randi() % footsteps.size()]
+	var pitch = (1.0 / random_pitch) + randf() * (random_pitch - 1.0 / random_pitch)
+
+	var player = AudioStreamPlayer.new()
+	add_child(player)
+	player.stream = sound
+	player.pitch_scale = pitch
+	player.bus = "Footsteps"
+	player.play()
+	yield(player, "finished")
+	player.queue_free()

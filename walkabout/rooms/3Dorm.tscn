@@ -11,7 +11,7 @@ margin_left = -1000.0
 margin_top = -1000.0
 margin_right = 1000.0
 margin_bottom = 1000.0
-color = Color( 0, 0.105882, 0.27451, 1 )
+color = Color( 0.0235294, 0.27451, 0.207843, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -42,7 +42,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Friend" parent="." groups=["day0", "entrance1"] instance=ExtResource( 3 )]
+[node name="Neighbor" parent="." groups=["day0", "entrance1"] instance=ExtResource( 3 )]
 position = Vector2( -104, 0 )
 auto_talk = true
-yarn_node = "TestYarn"
+yarn_node = "Day0Neighbor"

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Etude Op. 25 no. 11 in A minor - 'Winter Wind'.mp3-ce769f494697dd93b9d811ffede4247b.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Etude Op. 25 no. 11 in A minor - 'Winter Wind'.mp3"
+dest_files=[ "res://.import/Etude Op. 25 no. 11 in A minor - 'Winter Wind'.mp3-ce769f494697dd93b9d811ffede4247b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

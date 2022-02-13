@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Etude Op. 10, no. 12 in C minor - 'Revolutionary'.mp3-8190ae22faf1098114a37edeb230ad5c.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Etude Op. 10, no. 12 in C minor - 'Revolutionary'.mp3"
+dest_files=[ "res://.import/Etude Op. 10, no. 12 in C minor - 'Revolutionary'.mp3-8190ae22faf1098114a37edeb230ad5c.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

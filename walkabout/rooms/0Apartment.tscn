@@ -3,10 +3,10 @@
 [ext_resource path="res://walkabout/elements/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://walkabout/elements/Portal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://walkabout/elements/Portal.gd" type="Script" id=3]
-[ext_resource path="res://walkabout/elements/Friend.gd" type="Script" id=4]
+[ext_resource path="res://walkabout/elements/Friend.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 128, 64 )
+extents = Vector2( 10000, 10000 )
 
 [node name="Home" type="Node2D"]
 
@@ -45,14 +45,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AbuserDay0" type="Node2D" parent="."]
-position = Vector2( 865, -2 )
-script = ExtResource( 4 )
-yarn_node = "Abuser"
+[node name="NotFriend" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1457, -18 )
+auto_talk = true
+yarn_node = "IDKFigureItOut"
 
-[node name="FriendBox" type="Area2D" parent="AbuserDay0"]
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AbuserDay0/FriendBox"]
-position = Vector2( 0, -64 )
+[node name="CollisionShape2D" parent="NotFriend/FriendBox" index="0"]
 shape = SubResource( 1 )
+
+[editable path="NotFriend"]

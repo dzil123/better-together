@@ -5,7 +5,7 @@ export(GDScript) var yarn_script
 
 func _ready():
 	yarn.set_script(yarn_script)
-	commands["run_start"] = funcref(self, "run_start")
+	add_command(self, "run_start")
 
 
 func _process(delta):
