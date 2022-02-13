@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/menu_section_9patch.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://ui/OptionsList.gd" type="Script" id=7]
 [ext_resource path="res://assets/new_theme.tres" type="Theme" id=8]
 [ext_resource path="res://ui/DialogOption.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/1Bit_UI_pack_byBatuhan/border1_2x.tres" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -35,7 +36,6 @@ timer_label_path = NodePath("BottomBox/NinePatchRect/TimerBox/TimerLabel")
 option_list_path = NodePath("BottomBox/NinePatchRect/OptionsList")
 
 [node name="TopBox" type="Control" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -300.0
@@ -49,20 +49,22 @@ __meta__ = {
 [node name="DialogBox" type="NinePatchRect" parent="TopBox"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 2 )
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
+texture = ExtResource( 10 )
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="DialogText" type="RichTextLabel" parent="TopBox/DialogBox"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 390.0
-margin_bottom = 140.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+margin_top = 15.0
+margin_right = -80.0
+margin_bottom = -15.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_fonts/normal_font = SubResource( 1 )
