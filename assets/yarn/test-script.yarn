@@ -39,7 +39,7 @@ title: IDKFigureItOut
 position: 0,100
 ---
 <<if $lose is true>>
-    Test: Stub
+    <<gameover>>
 <<endif>>
 
 <<if $day == 0>>
@@ -70,13 +70,26 @@ position: 0,100
 <<if $day == 2>>
     <<if $day_started < 2>>
         <<set $day_started = 2>>
+        <<set $talked_already = false>>
+        <<set $real_talk = false>>
         [[Day2Start]]
     <<endif>>
     <<if $time <= 485>>
-        [[Day1End]]
+        [[Day2End]]
     <<else>>
-        [[Day1Return]]
+        [[Day2Return]]
     <<endif>>
+<<endif>>
+
+<<if $day == 3>>
+    <<if $day_started < 3>>
+        <<set $day_started = 3>>
+        <<set $met_with_friend = false>>
+        <<set $met_with_neighbor = false>>
+        [[Day3Start]]
+    <<endif>>
+
+    [[Day3End]]
 <<endif>>
 ===
 
@@ -126,7 +139,7 @@ Neighbor: Weird, since you live in the room across from me.
 <<set $connect_the_dots = false>>
 -> Yeah.
     Eden: Yeah.
-    Neighbor: Bad luck then, huh?
+    Neighbor: Thats some bad luck then, huh?
 -> Been staying with partner.
     Eden: I've been staying with a partner.
     Neighbor: I see. How long?
@@ -137,6 +150,7 @@ Neighbor: Weird, since you live in the room across from me.
     [[GottaGoNeighbor]]
 
 Neighbor: The whole floor is watching a movie tonight, Do you want to come?
+Neighbor: Theater's a ways away, but there's some extra space in my car.
 -> Busy with school.
     Eden: Sorry, I've got a lot of homework.
     Neighbor: Yup. Same. Hey, we're in the same classes, right?
@@ -284,15 +298,17 @@ Friend: Ugh, worst ATM machine ever.
 Friend: Hey! Eden? Where have you been?
 -> Gotta go.
     Eden: Sorry, I'm in a bit of a rush. I need to use the ATM.
-    Friend: Heyyy, me too! For both. Well actually, I'm done.
-    Friend: Can't talk right now. If you wanna, I'll be at practicing in the rooms. As always. Bye!!
+    Friend: Me too! For both. Well actually, I'm done.
+    Friend: Can't talk right now. Even if I really want to catch up!
+    Friend: If you wanna, I'll be at practicing in the rooms. As always. Bye!!
     <<exit>>
 -> Um.
     // empty
 -> Ummmm.
     // empty
 Eden: Um... So... It's complicated?
-Friend: Complicated! Complicated is good. Listen, I'm in a hurry so meet me in the practice rooms, alright? I'll be there as always. Bye!!
+Friend: Complicated! Complicated is good. Explains what you've been up to.
+Friend: Listen, I'm in a hurry so meet me in the practice rooms, alright? I'll be there as always. Bye!!
 ===
 
 title: Day1FriendLeave
@@ -397,6 +413,128 @@ position: 400, 200
 ---
 Abe: Forget something? Might as well stay.
 Eden: Yeah. Maybe.
+===
+
+title: Day2End
+position: 600, 200
+---
+Abe: How'd it go?
+-> Bombed.
+    Eden: It was terrible.
+    Abe: What did I say. Waste of time.
+-> Ok. <<if $real_talk == true>>
+    Eden: Actually, not that bad.
+    Abe: Impossible. Guess we'll have to see.    
+Abe: Well, it won't matter.
+Abe: Once I graduate, I'm going far far away.
+Abe: And you'll be coming with me.
+Abe: We'll be free.
+Abe: Doesn't that sound amazing?
+Abe: Just a bit longer.
+===
+
+title: Day2RealTalk
+position: 800, 200
+---
+<<if $talked_already == true>>
+    Friend: Whenever you're ready.
+    -> I should go.
+        <<exit>>
+    -> (partner.)
+        [[Day2RealTalkEndQuiet]]
+    -> Partner
+        [[Day2RealTalkEnd]]
+<<else>>
+    <<set $talked_already = true>>
+    [[Day2RealTalkInit]]
+<<endif>>
+===
+
+title: Day2RealTalkInit
+position: 1000, 200
+---
+Friend: You haven't been coming to practice for more than a month.
+Friend: What happened?
+-> Sorry.
+    Eden: Sorry.
+-> Sorry.
+    Eden: Sorry.
+-> I should go.
+    Eden: I shouldn't be here. I'm going to go.
+Friend: I'm just worried.
+Friend: Is something going on?
+-> Yes.
+    Eden: Yes.
+-> No.
+    Eden: No.
+    Friend: If you say so.
+-> I should go.
+    Eden: I'm not feeling very well, maybe I should go.
+    Friend: I won't force you to stay. You came for a reason.
+Friend: We used to talk about so much.
+Friend: Music, School, Family, Life.
+Friend: What happened? You're so closed off now.
+-> I should go.
+    Eden: I should really go.
+    Friend: Whenever you're ready.
+-> Partner.
+    [[Day2RealTalkEnd]]
+-> (partner.)
+    [[Day2RealTalkEndQuiet]]
+===
+
+title: Day2RealTalkEnd
+position: 1200, 200
+---
+Eden: It's my partner.
+Eden: They've been kind of.
+Eden: Clingy.
+Eden: They talk a lot about love.
+Eden: And life together.
+Eden: And being free?
+Eden: But I feel trapped.
+Eden: I don't like where we're headed.
+Eden: I can't say anything since they gets so angry.
+Eden: And I'm too far in and I can't leave, or else.
+Eden: I don't know how they'd be.
+[[Day2RealTalkEnddd]]
+===
+
+title: Day2RealTalkEndQuiet
+position: 1200, 200
+---
+Eden: (it's my partner.)
+Eden: (they've been kinda.)
+Eden: (clingy?)
+Eden: (they talk a lot about love and)
+Eden: (life together and)
+Eden: (being free but i feel)
+Eden: (trapped.)
+Eden: (i don't like where we're headed.)
+Eden: (i can't say anything since they gets so angry.)
+Eden: (and i'm too far in.)
+Eden: (i can't leave, or else i don't know how)
+Eden: (they'd be.)
+[[Day2RealTalkEnddd]]
+===
+
+title: Day2RealTalkEnddd
+position: 1400, 200
+---
+Friend: ... That's rougher than I was expecting.
+Friend: But it's good that you shared.
+Friend: I can't tell you should do.
+Friend: To be honest, I don't feel qualified to even talk about it.
+Friend: But I'm here for you.
+Friend: Just let me know how I can help.
+-> Okay.
+Eden: Okay.
+<<set $real_talk = true>>
+===
+
+title: Day3Start
+position: 200, 300
+---
 ===
 
 title: TimeOut
