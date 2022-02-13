@@ -5,6 +5,7 @@ position: 5,-78
 <<set $confidence_friend = 0>>
 <<set $confidence_bestfriend = 0>>
 <<set $money = 0>>
+<<set $day_started = -1>>
 <<set $lose = false>>
 ===
 
@@ -32,6 +33,23 @@ Test: You have this much money {$money}.
 -> Use money <<if $money > 0>>
     This is impossible since you have no money.
 
+===
+
+title: IDKFigureItOut
+position: 20,0
+---
+// <<if $lose is true>>
+// <<endif>>
+
+// <<if $day == 0>>
+//     <<if $day_started < 0>>
+//         [[Day0Start]]
+//     <<endif>>
+//     // <<if $>>
+//         // [[Day0End]]
+//     // <<endif>>
+//     [[Day0Return]]
+// <<endif>>
 ===
 
 title: Day0Start
@@ -118,5 +136,5 @@ Eden: I don't know yet.
 Abe: Here, lemme have it.
 <<playsound shake_box>>
 Abe: Sounds like a bunch of junk.
-Abe: 
+Abe: Well, we can just 
 ===

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Road.png-f66c87f4845114b5d959043b18e1e2c6.stex"
+path="res://.import/Dorm Room.png-c83fb9beaf6a38715a82826b5471aef1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Road.png"
-dest_files=[ "res://.import/Road.png-f66c87f4845114b5d959043b18e1e2c6.stex" ]
+source_file="res://assets/Dorm Room.png"
+dest_files=[ "res://.import/Dorm Room.png-c83fb9beaf6a38715a82826b5471aef1.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
