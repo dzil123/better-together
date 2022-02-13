@@ -35,6 +35,7 @@ func step_through_story(value = null) -> void:
 # Newlines are intentional
 const FUNCTION = """
 func {function_name}() -> void:
+	pass
 """
 
 
