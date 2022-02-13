@@ -31,6 +31,8 @@ func _on_YarnStory_options(yarn_node, options):
 
 	self.visible = true
 
+	$DUMMYBUTTON.grab_focus()  # any input goes to button one
+
 
 func _on_option_selected(option):
 	var option_text = options[option][0]

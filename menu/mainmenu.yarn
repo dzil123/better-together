@@ -16,7 +16,7 @@ Test: Better Together?
     << run_start >>
     Test: \n\n\n\n\n\n\n\n\n\nstalling
 -> Controls
-    WASD or Arrow Keys
+    WASD/Arrow Keys to move and select, Space to confirm
 -> Credits
     :Ryan Chang: Programmer, Writer, Lead\nHenry Dang: Artist, Producer\nDaniel Zilberleyb: Programmer
 
