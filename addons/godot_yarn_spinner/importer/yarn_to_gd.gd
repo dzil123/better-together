@@ -153,6 +153,8 @@ func shortcut_options(opts: Array) -> Array:
 		else:
 			for line in lines:
 				body.append("\t\t" + line)
+	body.append("\t_:")
+	body.append('\t\tpush_error("invalid option!")')
 
 	return body
 

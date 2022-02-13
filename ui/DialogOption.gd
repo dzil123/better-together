@@ -1,9 +1,5 @@
 extends RichTextLabel
 
-export(int) var option_index
-
-signal option_selected
-
 
 func _ready():
 	pass

@@ -1,12 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://walkabout/Walkabout.gd" type="Script" id=1]
-[ext_resource path="res://walkabout/rooms/0Apartment.tscn" type="PackedScene" id=2]
-[ext_resource path="res://walkabout/rooms/1Streets.tscn" type="PackedScene" id=3]
+[ext_resource path="res://walkabout/rooms/Home.tscn" type="PackedScene" id=2]
+[ext_resource path="res://walkabout/rooms/NotHome.tscn" type="PackedScene" id=3]
 [ext_resource path="res://walkabout/CrudeTimer.gd" type="Script" id=4]
-[ext_resource path="res://walkabout/rooms/3Dorm.tscn" type="PackedScene" id=5]
-[ext_resource path="res://walkabout/rooms/2Campus.tscn" type="PackedScene" id=6]
-[ext_resource path="res://walkabout/rooms/4DormOffice.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "InAndOut"
@@ -57,7 +54,7 @@ tracks/0/keys = {
 [node name="Walkabout" type="Node2D"]
 position = Vector2( 1, 0 )
 script = ExtResource( 1 )
-roomIdToScene = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ) ]
+roomIdToScene = [ ExtResource( 2 ), ExtResource( 3 ) ]
 
 [node name="PersistentUI" type="CanvasLayer" parent="."]
 

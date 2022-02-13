@@ -2,12 +2,14 @@ extends CanvasLayer
 
 export(NodePath) var timer_label_path
 export(NodePath) var option_list_path
+export(NodePath) var timer_path
 
 var commands = {}
 var block_progress = false
 
 onready var timer_label = get_node(timer_label_path) as Label
 onready var options_list = get_node(option_list_path)
+onready var timer = get_node(timer_path)
 onready var yarn = $YarnStory
 
 
@@ -24,9 +26,19 @@ func _ready():
 	yarn.step_through_story()
 
 
+func _process(delta):
+	if timer != null:
+		timer_label.text = timer.get_timer_text()
+
+
+func _step_story(value = null):
+	yarn.set_variable("timer_sec", 123)
+	yarn.step_through_story(value)
+
+
 func _on_YarnStory_dialogue(yarn_node, actor, message):
-	if !$Dialog_Control.visible:
-		$Dialog_Control.visible = true
+	if !$TopBox.visible:
+		$TopBox.visible = true
 
 
 func _on_DialogText_Label_line_complete():
@@ -46,6 +58,7 @@ func _on_select_option(option):
 
 
 func _on_YarnStory_command(yarn_node, command, parameters):
+	print("yarn command: ", command, " ", parameters)
 	if commands.has(command):
 		commands[command].call_funcv(parameters)
 
@@ -57,16 +70,3 @@ func string_to_bool(s):
 		return false
 	else:
 		push_error("fail")
-
-
-func set_cake_visible(visiblity):
-	$TextureRect.visible = string_to_bool(visiblity)
-
-
-func close_dialog():
-	$Dialog_Control.visible = false
-
-
-func the_end():
-	$Dialog_Control.visible = false
-	$TheEnd.visible = true

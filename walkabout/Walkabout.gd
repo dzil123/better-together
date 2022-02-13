@@ -1,37 +1,19 @@
 extends Node2D
 
+export(Array, PackedScene) var roomIdToScene = []
+
 var day = 0
 var roomId = 0
 
-var timer = 0
 var can_reset_timer = true
 
-export(Array, PackedScene) var roomIdToScene = []
+onready var timer = $Timer
 
 
 func _ready():
 	roomId = 0
 	tempEntrance = -1
 	actually_go()
-
-
-func _physics_process(delta):
-	if roomId != 0:
-		if can_reset_timer:
-			can_reset_timer = false
-			# start music
-			pass
-		timer -= delta
-	else:
-		if can_reset_timer:
-			# stop music
-			# or
-			pass
-		timer = 3 * 60
-
-	if timer <= 0:
-		$Room.emit_signal("lose")
-		pass
 
 
 var tempEntrance
@@ -45,6 +27,7 @@ func goto_room(id, entrance):
 	tempEntrance = entrance
 
 	$FadeToBlack.play("InAndOut")  # calls actually_go()
+	timer.room_safe = roomId == 0
 
 
 func actually_go():

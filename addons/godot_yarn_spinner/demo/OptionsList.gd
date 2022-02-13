@@ -5,14 +5,20 @@ export(Array, NodePath) var button_paths
 signal select_option(option)
 
 var buttons = []
+var options = []
 
 
 func _ready():
-	for button_path in button_paths:
-		buttons.append(get_node(button_path))
+	for index in range(button_paths.size()):
+		var button_path = button_paths[index]
+		var button = get_node(button_path)
+		button.connect("pressed", self, "_on_option_selected", [index])
+		buttons.append(button)
+	reset_menu()
 
 
 func _on_YarnStory_options(yarn_node, options):
+	self.options = options
 	for index in range(options.size()):
 		if index >= buttons.size():
 			push_error("too many options")
@@ -20,33 +26,23 @@ func _on_YarnStory_options(yarn_node, options):
 		var button = buttons[index]
 		var option = options[index]
 
-		button.text = option[0]
+		button.set_option(option)
 		button.visible = true
-		button.disabled = option[1]
 
 	self.visible = true
 
 
 func _on_option_selected(option):
+	var option_text = options[option][0]
 	reset_menu()
-	emit_signal("select_option", option)
+
+	emit_signal("select_option", option_text)
 
 
 func reset_menu():
 	self.visible = false
+	self.options = false
 	for button in buttons:
 		button.text = ""
 		button.visible = false
 		button.disabled = false
-
-
-func _on_DialogOption1_pressed():
-	_on_option_selected(0)
-
-
-func _on_DialogOption2_pressed():
-	_on_option_selected(1)
-
-
-func _on_DialogOption3_pressed():
-	_on_option_selected(2)
