@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Fantaisie - Impromptu, Op. 66.mp3-bd3b444751ace4ae87790197393a0de4.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Fantaisie - Impromptu, Op. 66.mp3"
+dest_files=[ "res://.import/Fantaisie - Impromptu, Op. 66.mp3-bd3b444751ace4ae87790197393a0de4.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
