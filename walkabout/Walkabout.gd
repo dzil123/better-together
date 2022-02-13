@@ -10,13 +10,23 @@ export(Array, PackedScene) var roomIdToScene = []
 
 
 func _ready():
-	goto_room(0, -1)
+	roomId = 0
+	tempEntrance = -1
+	actually_go()
 
 
 func _physics_process(delta):
 	if roomId != 0:
+		if can_reset_timer:
+			can_reset_timer = false
+			# start music
+			pass
 		timer -= delta
 	else:
+		if can_reset_timer:
+			# stop music
+			# or
+			pass
 		timer = 3 * 60
 
 	if timer <= 0:

@@ -14,6 +14,12 @@ Test: Oh.
 <<another_one>>
 
 Test: Hopefully this was a good test.
+Test: The time is {$time_sec}.
+Test: The time is {$time_sec}.
+Test: The time is {$time_sec}.
+Test: The time is {$time_sec}.
+Test: The time is {$time_sec}.
+Test: The time is {$time_sec}.
 
 <<you_get_the_point>>
 
