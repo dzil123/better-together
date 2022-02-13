@@ -55,15 +55,6 @@ func function(function_name: String, body: Array) -> String:
 func command(command: YarnCommand) -> Array:
 	# Handle certain commands separately
 	match command.command:
-		# Wait for n seconds
-		# TODO: Needs to be fixed. This yield doesn't continue the story correctly
-		"wait":
-			return [
-				'yield(get_tree().create_timer({duration}), "timeout")'.format(
-					{"duration": float(command.parameters[0])}
-				)
-			]
-
 		# Set a variable to the result of an expression
 		"set":
 			return [

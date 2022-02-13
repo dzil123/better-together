@@ -4,6 +4,7 @@ export(float) var starting_seconds = 180
 
 var timer = 0  # sec, float
 var room_safe = false
+var is_expired = false
 
 signal expired
 
@@ -13,6 +14,9 @@ func _ready():
 
 
 func _physics_process(delta):
+	if is_expired:
+		return
+
 	if room_safe:
 		reset()
 	else:
@@ -20,10 +24,12 @@ func _physics_process(delta):
 
 	if timer <= 0:
 		timer = 0
+		is_expired = true
 		emit_signal("expired")
 
 
 func reset():
+	is_expired = false
 	timer = starting_seconds
 
 
