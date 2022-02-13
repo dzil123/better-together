@@ -27,10 +27,8 @@ func _physics_process(delta):
 		is_expired = true
 		emit_signal("expired")
 
-	# temp debug
 
-
-func _input(event):
+func _input(event):  # temp debug
 	if event is InputEventKey and event.pressed:
 		match event.scancode:
 			KEY_Z:
