@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://walkabout/Walkabout.gd" type="Script" id=1]
 [ext_resource path="res://walkabout/rooms/0Apartment.tscn" type="PackedScene" id=2]
 [ext_resource path="res://walkabout/rooms/1Streets.tscn" type="PackedScene" id=3]
-[ext_resource path="res://walkabout/CrudeTimer.gd" type="Script" id=4]
 [ext_resource path="res://walkabout/Timer.gd" type="Script" id=5]
 [ext_resource path="res://ui/MainUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://walkabout/rooms/2Campus.tscn" type="PackedScene" id=7]
@@ -68,17 +67,6 @@ roomId = 4
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CrudeTimer" type="Label" parent="PersistentUI"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 113.0
-margin_bottom = 14.0
-text = "test test test test"
-script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
