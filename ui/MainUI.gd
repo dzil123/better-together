@@ -49,6 +49,10 @@ func _step_story(value = null):
 		emit_signal("movement_enabled", true)
 
 
+func add_command(obj, name):
+	commands[name] = funcref(self, name)
+
+
 func _on_YarnStory_dialogue(yarn_node, actor, message):
 	topbox.visible = true
 	in_dialog = true
