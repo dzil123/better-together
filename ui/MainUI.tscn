@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/menu_section_9patch.png" type="Texture" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://assets/new_theme.tres" type="Theme" id=8]
 [ext_resource path="res://ui/DialogOption.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/1Bit_UI_pack_byBatuhan/border1_2x.tres" type="Texture" id=10]
+[ext_resource path="res://assets/blank-canvas-texture-2.jpg" type="Texture" id=11]
+[ext_resource path="res://ui/animated_canvas.tres" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -213,6 +215,20 @@ autostart = true
 
 [node name="YarnStory" type="Node" parent="."]
 script = ExtResource( 3 )
+
+[node name="Blank-canvas-texture-2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 544, 158 )
+texture = ExtResource( 12 )
+
+[node name="Light2D" type="Light2D" parent="."]
+light_mask = 0
+position = Vector2( 478, 239 )
+rotation = 0.446804
+texture = ExtResource( 11 )
+energy = 0.92
+mode = 1
+range_z_max = 0
 
 [connection signal="line_complete" from="TopBox/DialogBox/DialogText" to="." method="_on_DialogText_Label_line_complete"]
 [connection signal="timeout" from="DialogCharTimer" to="TopBox/DialogBox/DialogText" method="_on_Timer_timeout"]

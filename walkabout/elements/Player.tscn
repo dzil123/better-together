@@ -10,6 +10,7 @@ extents = Vector2( 32, 64 )
 
 [node name="Player" type="Node2D" groups=["player"]]
 position = Vector2( 1, 0 )
+z_index = 1
 script = ExtResource( 2 )
 distance_per_footstep = 200.0
 footsteps = [ ExtResource( 3 ), ExtResource( 4 ) ]
