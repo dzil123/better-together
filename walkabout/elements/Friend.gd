@@ -18,7 +18,7 @@ func _physics_process(delta):
 		for area in $FriendBox.get_overlapping_areas():
 			if area.name == "PlayerBox":
 				started_auto_talk = true
-				
+
 				var yarn = get_walkabout().find_node("YarnStory")
 				yarn.set_current_yarn_thread(yarn_node)
 				yarn.step_through_story()

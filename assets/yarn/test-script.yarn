@@ -1,10 +1,15 @@
-title: TestYarn
-position: 0,0.5
+title: Start
+position: 5,-78
 ---
 <<set $confidence_neighbor = 0>>
 <<set $confidence_friend = 0>>
 <<set $confidence_bestfriend = 0>>
 <<set $money = 0>>
+===
+
+title: TestYarn
+position: 0,0.5
+---
 
 Test: Did you hear Steve Jobs...
 Test2: Yes. I'm a Zoomer.
@@ -15,21 +20,14 @@ Test: Oh.
 
 Test: Hopefully this was a good test.
 Test: The time is {$time_sec}.
-Test: The time is {$time_sec}.
-Test: The time is {$time_sec}.
-Test: The time is {$time_sec}.
-Test: The time is {$time_sec}.
-Test: The time is {$time_sec}.
+Test: You have this much money {$money}.
 
 <<you_get_the_point>>
 
--> Option 1
+-> Gain 1 money
     Haha yes.
--> Option 3 <<if $money > 0>>
+    <<set $money = $money + 1>>
+-> Use money <<if $money > 0>>
     This is impossible since you have no money.
--> Option 4
-    I don't think we'll need four options, but here you go.
-
-<<exit>>
 
 ===

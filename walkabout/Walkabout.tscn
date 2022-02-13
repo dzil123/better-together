@@ -5,7 +5,7 @@
 [ext_resource path="res://walkabout/rooms/1Streets.tscn" type="PackedScene" id=3]
 [ext_resource path="res://walkabout/CrudeTimer.gd" type="Script" id=4]
 [ext_resource path="res://walkabout/Timer.gd" type="Script" id=5]
-[ext_resource path="res://addons/godot_yarn_spinner/demo/DialogBox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/MainUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://walkabout/rooms/2Campus.tscn" type="PackedScene" id=7]
 [ext_resource path="res://walkabout/rooms/3Dorm.tscn" type="PackedScene" id=8]
 [ext_resource path="res://walkabout/rooms/4DormOffice.tscn" type="PackedScene" id=9]
@@ -86,9 +86,6 @@ __meta__ = {
 [node name="DialogBox" parent="." instance=ExtResource( 6 )]
 timer_path = NodePath("../Timer")
 
-[node name="TopBox" parent="DialogBox" index="0"]
-visible = false
-
 [node name="Room" type="Node2D" parent="."]
 
 [node name="FadeToBlack" type="AnimationPlayer" parent="."]
@@ -97,5 +94,3 @@ anims/RESET = SubResource( 2 )
 
 [node name="Timer" type="Node" parent="."]
 script = ExtResource( 5 )
-
-[editable path="DialogBox"]

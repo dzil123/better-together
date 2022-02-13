@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/menu_section_9patch.png-f522102493b74b7c9f94810d483e28c5.stex"
+path="res://.import/menu_section_9patch.png-e56199d22bfd6e42098a68fd195683cf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/godot_yarn_spinner/demo/menu_section_9patch.png"
-dest_files=[ "res://.import/menu_section_9patch.png-f522102493b74b7c9f94810d483e28c5.stex" ]
+source_file="res://assets/menu_section_9patch.png"
+dest_files=[ "res://.import/menu_section_9patch.png-e56199d22bfd6e42098a68fd195683cf.stex" ]
 
 [params]
 

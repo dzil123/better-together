@@ -11,7 +11,7 @@ onready var timer_label = get_node(timer_label_path) as Label
 onready var options_list = get_node(option_list_path)
 onready var timer = get_node(timer_path)
 onready var yarn = $YarnStory
-
+onready var topbox = $TopBox
 
 func _init():
 	pass
@@ -22,8 +22,10 @@ func _init():
 
 func _ready():
 	options_list.connect("select_option", self, "_on_select_option")
-	# yarn.set_current_yarn_thread("TestYarn")
-	# yarn.step_through_story()
+	yarn.set_variable("time_sec", 123)
+	yarn.set_current_yarn_thread("Start")
+	while yarn.current_function != "":
+		_step_story()
 
 
 func _process(delta):
@@ -32,17 +34,19 @@ func _process(delta):
 
 
 func _step_story(value = null):
-	yarn.set_variable("timer_sec", 123)
+	if timer != null:
+		yarn.set_variable("time_sec", timer.timer)
 	yarn.step_through_story(value)
+	if yarn.story_state == null:
+		yarn.current_function = ""
+		topbox.visible = false
 
 
 func _on_YarnStory_dialogue(yarn_node, actor, message):
-	if !$TopBox.visible:
-		$TopBox.visible = true
+	topbox.visible = true
 
 
 func _on_DialogText_Label_line_complete():
-	print("foo")
 	if !block_progress:
 		_step_story()
 
@@ -61,6 +65,7 @@ func _on_YarnStory_command(yarn_node, command, parameters):
 	print("yarn command: ", command, " ", parameters)
 	if commands.has(command):
 		commands[command].call_funcv(parameters)
+	call_deferred("_step_story")
 
 
 func string_to_bool(s):
