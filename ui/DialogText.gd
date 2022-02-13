@@ -53,7 +53,3 @@ func _on_Timer_timeout():
 
 func _on_YarnStory_dialogue(_yarn_node, _actor, message):
 	start_dialog(message)
-
-
-func _on_YarnStory_command(_yarn_node, command, parameters):
-	print(command, parameters)

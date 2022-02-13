@@ -196,5 +196,4 @@ script = ExtResource( 3 )
 [connection signal="timeout" from="DialogCharTimer" to="TopBox/DialogBox/DialogText" method="_on_Timer_timeout"]
 [connection signal="command" from="YarnStory" to="." method="_on_YarnStory_command"]
 [connection signal="dialogue" from="YarnStory" to="." method="_on_YarnStory_dialogue"]
-[connection signal="dialogue" from="YarnStory" to="TopBox/DialogBox/DialogText" method="_on_YarnStory_dialogue"]
 [connection signal="options" from="YarnStory" to="." method="_on_YarnStory_options"]
