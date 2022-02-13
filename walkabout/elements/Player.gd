@@ -3,6 +3,8 @@ extends Node2D
 var movable = true
 var entrance = 0
 
+var speed = 400
+
 
 func _ready():
 	for portal in get_tree().get_nodes_in_group("Portal"):
@@ -23,7 +25,7 @@ func _physics_process(delta):
 
 	var vx = 0
 	if Input.is_action_pressed("ui_left"):
-		vx -= 500
+		vx -= speed
 	if Input.is_action_pressed("ui_right"):
-		vx += 500
+		vx += speed
 	position.x += vx * delta

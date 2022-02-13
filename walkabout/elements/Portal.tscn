@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://walkabout/elements/Portal.gd" type="Script" id=2]
+[ext_resource path="res://walkabout/elements/portaldebug.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -24,3 +25,14 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PortalBox"]
 shape = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+rect_scale = Vector2( 5, 5 )
+text = "0 0
+0"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
