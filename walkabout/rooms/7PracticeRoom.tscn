@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://walkabout/elements/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://walkabout/elements/Portal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://walkabout/elements/Friend.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/bestofriend.png" type="Texture" id=4]
+[ext_resource path="res://assets/Piano.png" type="Texture" id=5]
 
 [node name="Home" type="Node2D"]
 
@@ -37,7 +39,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Piano" type="Sprite" parent="."]
+position = Vector2( 395, -70 )
+scale = Vector2( 1.5, 1 )
+texture = ExtResource( 5 )
+
 [node name="BestFriend" parent="." groups=["day2"] instance=ExtResource( 3 )]
 position = Vector2( 263, -1 )
 auto_talk = true
 yarn_node = "Day2RealTalk"
+
+[node name="Icon" parent="BestFriend/VisualStuff" index="0"]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 4 )
+
+[editable path="BestFriend"]

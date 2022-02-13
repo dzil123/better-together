@@ -108,6 +108,8 @@ func set_day(new_day):
 	yarn.set_variable("day", day)
 	sounds.day = day
 
+	goto_room(0, -1)
+
 
 func gameover():
 	_on_DialogBox_movement_enabled(false)
@@ -122,6 +124,7 @@ func playsoundsync(name):
 
 func mainmenu():
 	get_tree().change_scene("res://menu/MainMenu.tscn")
+
 
 func AnimationPlayer5WackHardcoded():
 	var node = find_node("AnimationPlayer5WackHardcoded") as AnimationPlayer

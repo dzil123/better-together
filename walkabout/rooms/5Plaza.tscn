@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://walkabout/elements/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://walkabout/elements/Portal.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/bestofriend.png" type="Texture" id=3]
 [ext_resource path="res://assets/Road.png" type="Texture" id=4]
 [ext_resource path="res://walkabout/elements/Friend.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/ATM.png" type="Texture" id=6]
@@ -99,4 +100,9 @@ anims/Skedaddle = SubResource( 3 )
 position = Vector2( 673, 1 )
 yarn_node = "Day1Friend"
 
+[node name="Icon" parent="Friend/VisualStuff" index="0"]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 3 )
+
 [editable path="ATM"]
+[editable path="Friend"]

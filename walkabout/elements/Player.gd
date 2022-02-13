@@ -11,6 +11,7 @@ var speed = 400
 var distance = 0
 
 var softlock_hack = 0
+var lose = false
 
 
 func _ready():
@@ -32,6 +33,9 @@ func _physics_process(delta):
 		var areas = $PlayerBox.get_overlapping_areas()
 		for area in areas:
 			if area.name == "PortalBox":
+				if lose and area.get_parent().entrance != 0:
+					return
+
 				get_tree().get_root().get_node("Walkabout").goto_room(
 					area.get_parent().goto_room,
 					area.get_parent().goto_entrance,

@@ -58,7 +58,8 @@ position = Vector2( 0, -30 )
 texture = SubResource( 1 )
 
 [node name="ATM" parent="." instance=ExtResource( 5 )]
-position = Vector2( 732, -25 )
+visible = false
+position = Vector2( -784, -17 )
 yarn_node = "ATMInit"
 
 [node name="Icon" parent="ATM/VisualStuff" index="0"]
@@ -68,7 +69,8 @@ texture = ExtResource( 6 )
 [node name="Portal" parent="." instance=ExtResource( 2 )]
 
 [node name="PortalTemporary" parent="." instance=ExtResource( 2 )]
-position = Vector2( 200, 0 )
+visible = false
+position = Vector2( -542, -4 )
 goto_room = 2
 my_entrance = 1
 
