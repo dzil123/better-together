@@ -1,17 +1,16 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/menu_section_9patch.png" type="Texture" id=2]
 [ext_resource path="res://assets/yarn/test-script.yarn" type="Script" id=3]
 [ext_resource path="res://ui/MainUI.gd" type="Script" id=4]
 [ext_resource path="res://ui/DialogText.gd" type="Script" id=5]
-[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://not_icon.png" type="Texture" id=6]
 [ext_resource path="res://ui/OptionsList.gd" type="Script" id=7]
 [ext_resource path="res://assets/new_theme.tres" type="Theme" id=8]
 [ext_resource path="res://ui/DialogOption.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/1Bit_UI_pack_byBatuhan/border1_2x.tres" type="Texture" id=10]
 [ext_resource path="res://assets/blank-canvas-texture-2.jpg" type="Texture" id=11]
-[ext_resource path="res://ui/animated_canvas.tres" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -83,10 +82,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -70.0
-margin_top = -70.0
-margin_right = -10.0
-margin_bottom = -10.0
+margin_left = -40.0
+margin_top = -40.0
+margin_right = -20.0
+margin_bottom = -20.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -196,6 +195,9 @@ patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TimerLabel" type="Label" parent="BottomBox/NinePatchRect/TimerBox"]
 anchor_right = 1.0
@@ -216,12 +218,8 @@ autostart = true
 [node name="YarnStory" type="Node" parent="."]
 script = ExtResource( 3 )
 
-[node name="Blank-canvas-texture-2" type="Sprite" parent="."]
-visible = false
-position = Vector2( 544, 158 )
-texture = ExtResource( 12 )
-
 [node name="Light2D" type="Light2D" parent="."]
+visible = false
 light_mask = 0
 position = Vector2( 478, 239 )
 rotation = 0.446804

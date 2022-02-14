@@ -4,6 +4,7 @@ export(bool) var auto_talk = false
 export(String) var yarn_node = "failsafe"
 
 var started_auto_talk = false
+export(bool) var is_an_atm = false
 
 
 func get_walkabout():
@@ -31,6 +32,12 @@ func _physics_process(delta):
 				var yarn = get_walkabout().yarn
 				yarn.set_current_yarn_thread(yarn_node)
 				yarn.step_through_story()
+
+				if not is_an_atm:
+					if player_hack.global_position.x > self.global_position.x:
+						$VisualStuff.scale.x = -1
+					else:
+						$VisualStuff.scale.x = 1
 
 	$VisualStuff/InteractablePrompt.visible = (
 		nearby

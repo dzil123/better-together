@@ -49,8 +49,25 @@ func _physics_process(delta):
 		vx -= speed
 	if Input.is_action_pressed("ui_right"):
 		vx += speed
+	var old_position = position.x
 	position.x += vx * delta * (2 if Input.is_key_pressed(KEY_MINUS) else 1)
-	distance += abs(vx * delta * 2)
+
+	for bound in get_tree().get_nodes_in_group("bounds"):
+		if bound.name == "left":
+			if global_position.x < bound.global_position.x:
+				global_position.x = bound.global_position.x
+		if bound.name == "right":
+			if global_position.x > bound.global_position.x:
+				global_position.x = bound.global_position.x
+
+	distance += abs(position.x - old_position)
+
+	if position.x == old_position:
+		$VisualStuff/AnimatedSprite.play("Idle")
+	else:
+		if $VisualStuff/AnimatedSprite.animation != "Walk":
+			$VisualStuff/AnimatedSprite.play("Walk")
+		$VisualStuff.scale.x = sign(position.x - old_position)
 
 
 func _process(delta):

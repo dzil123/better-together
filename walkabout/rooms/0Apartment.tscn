@@ -65,4 +65,10 @@ yarn_node = "IDKFigureItOut"
 [node name="CollisionShape2D" parent="NotFriend/FriendBox" index="0"]
 shape = SubResource( 1 )
 
+[node name="left" type="Node2D" parent="." groups=["bounds"]]
+position = Vector2( -381, -3 )
+
+[node name="right" type="Node2D" parent="." groups=["bounds"]]
+position = Vector2( 381, 1 )
+
 [editable path="NotFriend"]

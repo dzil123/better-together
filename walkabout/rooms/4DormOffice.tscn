@@ -47,4 +47,10 @@ scale = Vector2( 1, 1 )
 texture = ExtResource( 4 )
 flip_v = true
 
+[node name="left" type="Node2D" parent="." groups=["bounds"]]
+position = Vector2( -381, -3 )
+
+[node name="right" type="Node2D" parent="." groups=["bounds"]]
+position = Vector2( 381, 1 )
+
 [editable path="Task"]

@@ -85,14 +85,10 @@ my_entrance = 1
 offset = Vector2( 0, -50 )
 current = true
 
-[node name="Label" type="Label" parent="."]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 82.0
-margin_bottom = 24.0
-text = "Not Home"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="left" type="Node2D" parent="." groups=["bounds"]]
+position = Vector2( -128, 1 )
+
+[node name="right" type="Node2D" parent="." groups=["bounds"]]
+position = Vector2( 6200, 0 )
 
 [editable path="ATM"]

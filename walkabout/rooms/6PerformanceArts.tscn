@@ -55,3 +55,9 @@ text = "Not Home"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="left" type="Node2D" parent="." groups=["bounds"]]
+position = Vector2( -381, -3 )
+
+[node name="right" type="Node2D" parent="." groups=["bounds"]]
+position = Vector2( 1273, -7 )
