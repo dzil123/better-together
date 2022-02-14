@@ -212,7 +212,7 @@ __meta__ = {
 }
 
 [node name="DialogCharTimer" type="Timer" parent="."]
-wait_time = 0.03
+wait_time = 0.05
 autostart = true
 
 [node name="YarnStory" type="Node" parent="."]

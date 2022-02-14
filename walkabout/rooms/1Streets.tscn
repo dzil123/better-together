@@ -1,11 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://walkabout/elements/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://walkabout/elements/Portal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tree.png" type="Texture" id=3]
 [ext_resource path="res://assets/Road.png" type="Texture" id=4]
-[ext_resource path="res://walkabout/elements/Friend.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/ATM.png" type="Texture" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 6
@@ -57,22 +55,7 @@ texture = ExtResource( 3 )
 position = Vector2( 0, -30 )
 texture = SubResource( 1 )
 
-[node name="ATM" parent="." instance=ExtResource( 5 )]
-visible = false
-position = Vector2( -784, -17 )
-yarn_node = "ATMInit"
-
-[node name="Icon" parent="ATM/VisualStuff" index="0"]
-scale = Vector2( 1, 1 )
-texture = ExtResource( 6 )
-
 [node name="Portal" parent="." instance=ExtResource( 2 )]
-
-[node name="PortalTemporary" parent="." instance=ExtResource( 2 )]
-visible = false
-position = Vector2( -542, -4 )
-goto_room = 2
-my_entrance = 1
 
 [node name="Portal2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 6000, 0 )
@@ -90,5 +73,3 @@ position = Vector2( -128, 1 )
 
 [node name="right" type="Node2D" parent="." groups=["bounds"]]
 position = Vector2( 6200, 0 )
-
-[editable path="ATM"]
