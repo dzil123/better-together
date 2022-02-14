@@ -51,5 +51,8 @@ func _on_Timer_timeout():
 		emit_signal("line_complete", false)
 
 
-func _on_YarnStory_dialogue(_yarn_node, _actor, message):
+func _on_YarnStory_dialogue(_yarn_node, actor, message):
+	if actor != "":
+		message = "[b]" + actor + "[/b]: " + message
+
 	start_dialog(message)

@@ -218,6 +218,7 @@ timer_seconds_by_day = [ 120, 180, 150, 120 ]
 [node name="PersistentUI" type="CanvasLayer" parent="."]
 
 [node name="DebugYarn" type="Label" parent="PersistentUI"]
+visible = false
 margin_right = 82.0
 margin_bottom = 14.0
 script = ExtResource( 4 )

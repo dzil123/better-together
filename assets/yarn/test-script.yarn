@@ -10,32 +10,6 @@ position: 0,0
 <<set $door0unlocked = true>>
 ===
 
-title: TestYarn
-position: -200,0
----
-
-Test: Did you hear Steve Jobs...
-Test2: Yes. I'm a Zoomer.
-Test: Oh.
-
-<<test_command>>
-<<another_one>>
-
-Test: Hopefully this was a good test.
-Test: The time is {$time_sec}.
-<<set $autoadvance = true>>
-Test: You have this much money {$money}.
-
-<<you_get_the_point>>
-
--> Gain 1 money
-    Haha yes.
-    <<set $money = $money + 1>>
--> Use money <<if $money > 0>>
-    This is impossible since you have no money.
-
-===
-
 title: IDKFigureItOut
 position: 0,100
 ---

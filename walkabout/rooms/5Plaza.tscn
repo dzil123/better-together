@@ -87,7 +87,7 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = 82.0
 margin_bottom = 24.0
-text = "Not Home"
+text = ""
 __meta__ = {
 "_edit_use_anchors_": false
 }

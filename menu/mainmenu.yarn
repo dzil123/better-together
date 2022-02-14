@@ -9,12 +9,12 @@ position: 0,0.5
 ---
 
 <<set $autoadvance = true>>
-Test: Better Together?
+Better Together?
 
 -> Start
     <<set $autoadvance = true>>
     << run_start >>
-    Test: \n\n\n\n\n\n\n\n\n\nstalling
+    \n\n\n\n\n\n\n\n\n\nstalling
 -> Controls
     WASD/Arrow Keys to move and select, Space to confirm
 -> Credits

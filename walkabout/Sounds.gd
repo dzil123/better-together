@@ -47,7 +47,7 @@ func playsound(name, delay = 0):
 
 	if delay > 0:
 		yield(get_tree().create_timer(delay), "timeout")
-	
+
 	var player = AudioStreamPlayer.new()
 	add_child(player)
 	player.stream = sound
