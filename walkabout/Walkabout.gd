@@ -52,6 +52,9 @@ func goto_room(id, entrance, door_and_not_path = true):
 func actually_go():
 	remove_child($Room)
 
+	if Input.is_key_pressed(KEY_J):
+		yarn.set_variable("got_package", true)
+
 	var newRoom = roomIdToScene[roomId].instance()
 	newRoom.name = "Room"  # eh
 	newRoom.get_node("Player").entrance = tempEntrance

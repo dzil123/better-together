@@ -3,6 +3,7 @@ extends Node2D
 export(float, EXP) var distance_per_footstep = 1
 export(Array, AudioStream) var footsteps = []
 export(float, 1, 16, 0.01) var random_pitch = 1
+export(bool) var invert_facing = false
 
 var movable = true
 var entrance = 0
@@ -50,6 +51,14 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
 		vx += speed
 	var old_position = position.x
+
+	var icon = $VisualStuff/Icon as Sprite
+	var face_left = false
+	if vx < 0:
+		icon.flip_h = invert_facing
+	elif vx > 0:
+		icon.flip_h = not invert_facing
+
 	position.x += vx * delta * (2 if Input.is_key_pressed(KEY_MINUS) else 1)
 
 	for bound in get_tree().get_nodes_in_group("bounds"):
